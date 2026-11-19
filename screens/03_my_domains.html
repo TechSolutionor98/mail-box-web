@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline":"#747780","primary-fixed":"#d8e2ff","on-primary":"#ffffff","surface-tint":"#475e8c","outline-variant":"#c4c6d0","on-primary-container":"#8ba2d5","on-secondary":"#ffffff","inverse-surface":"#213145","on-secondary-fixed":"#00174b","primary-container":"#1f3864","on-error-container":"#93000a","error-container":"#ffdad6","on-tertiary-fixed":"#002114","primary-fixed-dim":"#afc6fb","on-primary-fixed-variant":"#2e4673","on-secondary-container":"#fefcff","on-primary-fixed":"#001a41","error":"#ba1a1a","secondary":"#0051d5","surface":"#f8f9ff","on-tertiary-fixed-variant":"#005137","surface-container":"#e5eeff","tertiary-container":"#00422c","on-surface-variant":"#44474f","surface-container-lowest":"#ffffff","inverse-primary":"#afc6fb","secondary-fixed-dim":"#b4c5ff","surface-container-low":"#eff4ff","tertiary-fixed-dim":"#68dba9","surface-bright":"#f8f9ff","on-tertiary":"#ffffff","secondary-container":"#316bf3","surface-container-high":"#dce9ff","surface-container-highest":"#d3e4fe","on-tertiary-container":"#3fb687","tertiary-fixed":"#85f8c4","surface-variant":"#d3e4fe","secondary-fixed":"#dbe1ff","on-surface":"#0b1c30","background":"#f8f9ff","tertiary":"#002a1a","on-secondary-fixed-variant":"#003ea8","on-background":"#0b1c30","on-error":"#ffffff","primary":"#03224d","inverse-on-surface":"#eaf1ff","surface-dim":"#cbdbf5"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"margin-sm":"1rem","gutter-sm":"1rem","space-md":"1rem","space-sm":"0.5rem","space-xs":"0.25rem","gutter":"1.5rem","space-xl":"2rem","space-lg":"1.5rem","margin":"2rem"},fontFamily:{"caption":["Inter"],"headline-md":["Inter"],"label-md":["Inter"],"headline-lg-mobile":["Inter"],"title-sm":["Inter"],"display-lg":["Inter"],"label-sm":["Inter"],"body-sm":["Inter"],"body-md":["Inter"],"code-sm":["Inter"],"body-lg":["Inter"],"headline-lg":["Inter"]},fontSize:{"caption":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-md":["18px",{"lineHeight":"26px","letterSpacing":"-0.015em","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"title-sm":["15px",{"lineHeight":"22px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.025em","fontWeight":"700"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"body-lg":["15px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-primary z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-gutter flex items-center gap-space-sm bg-primary"><img alt="Modern geometric cloud infrastructure hexagon icon with server nodes and high-speed network connections, deep navy and vibrant cobalt blue. Brand logo. - Primary color: #1f3864
+- Font: inter
+- Mode: light
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UHLZQAJCLxMo0ftLj4ORVVkOTO4vMKIVs7Kv7zzh0G1BB7zvo5NbDu8ASRxYvjGip68_NYgZ605kX80rlSHkEU0W3IzT08uA8iIKg7s_FfoucY8d1LI_odTY_Z9tcwCC4E4miRXamKLpdUjMxiJ6-6j3PbjwXTUyr96GVYn9u2FuRmSE59Yq-FV4NxOnfxn82rXi1d3mT5hTbrj-F41fXJQdyPN4Bhs_dM5jht745E4L5PaKII0StL0Q"/><div class="flex flex-col"><span class="text-title-sm font-title-sm text-on-primary font-semibold leading-tight">CloudHost</span><span class="text-caption font-caption text-primary-fixed-dim uppercase tracking-wider">Client Portal</span></div></div><div class="px-gutter pt-space-lg pb-space-xs"><span class="text-caption font-caption uppercase tracking-wider text-outline-variant font-semibold">Hosting Core</span></div><nav class="flex flex-col gap-1 px-space-sm" data-active-classes="bg-secondary text-on-secondary font-label-md text-label-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span>Dashboard</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-colors bg-secondary text-on-secondary font-label-md text-label-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-path="my-domains" href="#"><span class="material-symbols-outlined text-lg">language</span><span>My Domains</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="email-accounts" href="#"><span class="material-symbols-outlined text-lg">mail</span><span>Email Accounts</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="webmail-access" href="#"><span class="material-symbols-outlined text-lg">open_in_new</span><span>Webmail Access</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="packages-and-upgrade" href="#"><span class="material-symbols-outlined text-lg">bolt</span><span>Packages &amp; Upgrade</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="account-settings" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Account Settings</span></a></nav></div><div class="p-space-md flex flex-col gap-space-sm"><div class="bg-primary-container rounded-xl p-space-md flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="text-caption font-caption text-primary-fixed-dim uppercase">Storage Quota</span><span class="text-caption font-caption text-primary-fixed font-semibold">32%</span></div><div class="w-full h-1.5 bg-primary rounded-full overflow-hidden"><div class="h-full bg-secondary-fixed w-1/3 rounded-full"></div></div><div class="flex justify-between items-center pt-space-xs"><span class="text-caption font-caption text-primary-fixed-dim">3.2 GB / 10 GB used</span></div></div><div class="pt-space-xs flex flex-col gap-1"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="support-tickets" href="#"><span class="material-symbols-outlined text-lg">support_agent</span><span>Support Ticket</span></a></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl z-40 flex items-center justify-between px-gutter shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-gutter"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-lg pointer-events-none">search</span><input class="w-80 h-9 pl-9 pr-14 bg-surface-container-low text-on-surface rounded-xl border-0 focus:outline-none focus:bg-surface-container text-body-sm font-body-sm placeholder:text-outline" placeholder="Search domains, mailboxes, dns..." type="text"/><div class="absolute right-2 px-1.5 py-0.5 bg-surface-container rounded text-caption font-caption text-outline">⌘K</div></div><div class="hidden xl:flex items-center gap-space-xs bg-surface-container px-space-md py-1 rounded-full text-caption font-caption text-on-surface"><span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span><span class="font-semibold text-primary">Cloud Business</span><span class="text-outline-variant">•</span><span class="text-on-surface-variant">3 Domains</span><span class="text-outline-variant">•</span><span class="text-on-surface-variant">12 Mailboxes</span></div></div><div class="flex items-center gap-space-md"><button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span></button><div class="h-6 w-px bg-surface-container"></div><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XxZEq0yqsxY-aIxJ7jLZ3GEnnvjhuk1d3fqr1tG3_hWz4KMwnWomCcxIb4zxDFqpxOHzAPGS0EuNHmrGIlLj10XxjIioBjd7dTfn5XylzALvY-ERJTsDbkA7bMhaiWpSVkc-a1lVE67kCiGbTVnxmuCu2K-Aywob57_1vTR6cPv7kx0Olyyh0Dfw1GC9ArcB138-AMyfcC7OZpIGRHdnB7oiEfJvbAwgH_ApZzqU8Q45REjbPEwCJV9-Y"/><div class="hidden sm:flex flex-col text-left"><span class="text-label-md font-label-md text-on-surface font-semibold leading-tight">Alexander Wright</span><span class="text-caption font-caption text-on-surface-variant">Account Owner</span></div></div><a class="flex items-center gap-1 text-label-sm font-label-sm text-outline hover:text-error transition-colors px-2 py-1 rounded-lg ml-space-xs" data-path="login" href="#"><span class="material-symbols-outlined text-base">logout</span><span class="hidden md:inline">Log out</span></a></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full">
+<!-- Dynamic Atmospheric Glow -->
+<div class="relative w-full px-gutter py-space-lg flex flex-col gap-gutter max-w-7xl mx-auto">
+<div class="absolute top-0 right-1/4 w-96 h-96 bg-secondary-fixed/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-32 left-10 w-72 h-72 bg-tertiary-fixed-dim/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<!-- Page Header (High Density Command Center) -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-caption font-caption text-secondary uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">dns</span>
+<span>Core Infrastructure • Zone 01</span>
+</div>
+<h1 class="text-display-lg font-display-lg text-primary tracking-tight font-bold">My Domains</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-2xl">
+          Assigned domain names, authoritative nameservers, and real-time DNS routing status across global edge nodes.
+        </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<button class="group flex items-center gap-space-xs px-space-md py-2.5 rounded-xl bg-surface-container-lowest text-primary font-label-md text-label-md shadow-sm hover:bg-surface-container-low transition-all" id="refreshHealthBtn" type="button">
+<span class="material-symbols-outlined text-lg text-secondary group-hover:rotate-180 transition-transform duration-500">sync</span>
+<span>Sync Status</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-lg py-2.5 rounded-xl bg-secondary text-on-secondary font-label-md text-label-md shadow-md hover:bg-secondary-container transition-all" onclick="document.getElementById('requestModal').classList.remove('hidden')" type="button">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+<span>Request Domain</span>
+</button>
+</div>
+</div>
+<!-- Top Telemetry & Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1: Assigned Capacity -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-outline uppercase tracking-wider">Assigned Capacity</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-caption text-caption">Quota</span>
+</div>
+<div class="my-space-md flex items-baseline justify-between">
+<div class="flex items-baseline gap-space-xs">
+<span class="text-display-lg font-display-lg text-primary font-bold">2</span>
+<span class="text-headline-md font-headline-md text-outline">/ 5 allowed</span>
+</div>
+<!-- Gauge Mini Chart -->
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-12 h-12 -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="40, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute text-caption font-caption font-semibold text-primary">40%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-low h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full transition-all duration-700" style="width: 40%"></div>
+</div>
+<span class="text-caption font-caption text-on-surface-variant mt-space-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">info</span>
+          3 domain slots readily available
+        </span>
+</div>
+<!-- Card 2: Active Verification -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-outline uppercase tracking-wider">Health &amp; Security</span>
+<span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed/40 text-tertiary font-caption text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+            100% Operational
+          </span>
+</div>
+<div class="my-space-md flex items-baseline justify-between">
+<div class="flex flex-col">
+<span class="text-display-lg font-display-lg text-primary font-bold">2 Domains</span>
+<span class="text-body-sm font-body-sm text-outline">Both Active &amp; Verified</span>
+</div>
+<!-- Sparkline representation -->
+<div class="w-24 h-10">
+<svg class="w-full h-full text-secondary" viewbox="0 0 100 40">
+<path d="M0,35 Q20,20 40,25 T80,10 T100,5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<circle class="fill-secondary" cx="100" cy="5" r="3"></circle>
+</svg>
+</div>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs text-caption font-caption text-on-surface-variant">
+<span class="flex items-center gap-1 text-primary font-semibold">
+<span class="material-symbols-outlined text-sm text-secondary">verified_user</span>
+            Zero SSL warnings
+          </span>
+<span>•</span>
+<span>DNSSEC enforced</span>
+</div>
+</div>
+<!-- Card 3: Nameserver Status -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-outline uppercase tracking-wider">Nameserver Status</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary font-caption text-caption font-semibold">Anycast Edge</span>
+</div>
+<div class="my-space-md flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-title-sm font-title-sm text-primary font-bold">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim ring-4 ring-tertiary-fixed/30"></span>
+<span>Fully Propagated</span>
+</div>
+<div class="flex flex-col gap-1 font-mono text-code-sm font-code-sm bg-surface-container-low px-space-md py-2 rounded-lg text-on-surface">
+<div class="flex items-center justify-between">
+<span>ns1.cloudhost.net</span>
+<span class="text-caption font-caption text-outline uppercase">Primary</span>
+</div>
+<div class="flex items-center justify-between">
+<span>ns2.cloudhost.net</span>
+<span class="text-caption font-caption text-outline uppercase">Backup</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-outline">
+<span>Global Latency: ~14ms</span>
+<span class="text-secondary font-semibold cursor-pointer hover:underline">Check propagation →</span>
+</div>
+</div>
+</div>
+<!-- Domain Catalog & Controls Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Search, Filter & View Controls -->
+<div class="p-space-lg flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md bg-surface-container-lowest">
+<!-- Search bar -->
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg pointer-events-none">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-surface-container-low rounded-xl text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container transition-all" id="domainSearchInput" placeholder="Search domain by name (e.g. apexdesign.io)..." type="text"/>
+</div>
+<!-- Filter Pills & Density Segment -->
+<div class="flex flex-wrap items-center gap-space-sm justify-between lg:justify-end">
+<div class="flex items-center bg-surface-container-low p-1 rounded-xl">
+<button class="filter-tab active px-space-md py-1.5 rounded-lg text-label-sm font-label-sm bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all" data-filter="all" type="button">
+              All (2)
+            </button>
+<button class="filter-tab px-space-md py-1.5 rounded-lg text-label-sm font-label-sm text-outline hover:text-primary transition-all" data-filter="active" type="button">
+              Active (2)
+            </button>
+<button class="filter-tab px-space-md py-1.5 rounded-lg text-label-sm font-label-sm text-outline hover:text-primary transition-all" data-filter="pending" type="button">
+              Pending Verification (0)
+            </button>
+</div>
+<div class="h-6 w-px bg-surface-container hidden sm:block"></div>
+<!-- Protocol badge quick info -->
+<div class="hidden sm:flex items-center gap-1.5">
+<span class="px-2 py-1 rounded bg-surface-container text-caption font-caption text-primary font-bold">ANYCAST</span>
+<span class="px-2 py-1 rounded bg-secondary-fixed text-caption font-caption text-on-secondary-fixed font-bold">DNSSEC</span>
+</div>
+</div>
+</div>
+<!-- Domain Records Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-caption font-caption text-outline uppercase tracking-wider h-11">
+<th class="py-2 px-space-lg font-semibold">Domain Name</th>
+<th class="py-2 px-space-md font-semibold">Type</th>
+<th class="py-2 px-space-md font-semibold">SSL Status</th>
+<th class="py-2 px-space-md font-semibold">DNS Routing</th>
+<th class="py-2 px-space-md font-semibold">Connected Mail</th>
+<th class="py-2 px-space-md font-semibold">Assigned Date</th>
+<th class="py-2 px-space-lg text-right font-semibold">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm" id="domainTableBody">
+<!-- Row 1: apexdesign.io -->
+<tr class="domain-row group hover:bg-surface-container-low/60 transition-colors" data-domain="apexdesign.io" data-status="active">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary font-bold text-title-sm flex-shrink-0 shadow-sm">
+                    A
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-sm text-title-sm text-primary font-semibold truncate group-hover:text-secondary transition-colors">apexdesign.io</span>
+<span class="text-caption font-caption text-outline">Target: edge-node-09.cloudhost.net</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-caption font-caption font-semibold bg-primary-fixed text-on-primary-fixed">
+                  Primary Domain
+                </span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="p-1 rounded-lg bg-tertiary-fixed/30 text-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-base">lock</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Let's Encrypt Active</span>
+<span class="text-caption font-caption text-outline">Expires in 74 days</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface-container text-primary text-caption font-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-ping"></span>
+<span>Synced (Healthy)</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-lg text-secondary">mail</span>
+<span class="font-semibold text-primary">8 active</span>
+<span class="text-caption font-caption text-outline">/ 10</span>
+</div>
+</td>
+<td class="py-4 px-space-md text-outline">
+<span class="text-body-sm font-body-sm text-on-surface">Mar 12, 2024</span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-secondary text-on-secondary text-label-sm font-label-sm font-semibold hover:bg-secondary-container transition-colors shadow-sm" onclick="openDnsModal('apexdesign.io')" type="button">
+                    View DNS
+                  </button>
+<a class="px-space-md py-1.5 rounded-lg bg-surface-container-low text-primary text-label-sm font-label-sm font-medium hover:bg-surface-container transition-colors" data-path="email-accounts" href="#">
+                    Manage Mailboxes
+                  </a>
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container-low transition-colors" title="Domain Settings" type="button">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: designcraft.co -->
+<tr class="domain-row group hover:bg-surface-container-low/60 transition-colors" data-domain="designcraft.co" data-status="active">
+<td class="py-4 px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary font-bold text-title-sm flex-shrink-0 shadow-sm">
+                    D
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-sm text-title-sm text-primary font-semibold truncate group-hover:text-secondary transition-colors">designcraft.co</span>
+<span class="text-caption font-caption text-outline">Target: edge-node-09.cloudhost.net</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-caption font-caption font-semibold bg-surface-container text-on-surface-variant">
+                  Secondary Domain
+                </span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="p-1 rounded-lg bg-tertiary-fixed/30 text-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-base">lock</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-primary font-semibold">Let's Encrypt Active</span>
+<span class="text-caption font-caption text-outline">Expires in 82 days</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface-container text-primary text-caption font-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span>Synced (Healthy)</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-lg text-secondary">mail</span>
+<span class="font-semibold text-primary">4 active</span>
+<span class="text-caption font-caption text-outline">/ 10</span>
+</div>
+</td>
+<td class="py-4 px-space-md text-outline">
+<span class="text-body-sm font-body-sm text-on-surface">May 04, 2024</span>
+</td>
+<td class="py-4 px-space-lg text-right">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container text-primary text-label-sm font-label-sm font-semibold hover:bg-surface-container-high transition-colors" onclick="openDnsModal('designcraft.co')" type="button">
+                    View DNS
+                  </button>
+<a class="px-space-md py-1.5 rounded-lg bg-surface-container-low text-primary text-label-sm font-label-sm font-medium hover:bg-surface-container transition-colors" data-path="email-accounts" href="#">
+                    Manage Mailboxes
+                  </a>
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container-low transition-colors" title="Domain Settings" type="button">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Empty State (Hidden by default) -->
+<div class="hidden p-space-xl flex-col items-center justify-center text-center gap-space-sm bg-surface-container-lowest" id="noDomainsFound">
+<span class="material-symbols-outlined text-4xl text-outline">travel_explore</span>
+<span class="text-headline-md font-headline-md text-primary font-semibold">No matching domains found</span>
+<span class="text-body-sm font-body-sm text-outline max-w-sm">Try refining your keyword query or clear filters to view all assigned hosting domains.</span>
+</div>
+<!-- Pagination / Footer Info inside table container -->
+<div class="px-space-lg py-space-sm bg-surface-container-low/70 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-caption font-caption text-outline">
+<div class="flex items-center gap-space-xs">
+<span>Showing 2 of 2 assigned domains</span>
+<span>•</span>
+<span class="text-secondary font-medium">Automatic DNSSEC signing is active for all zones</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-primary font-medium shadow-sm cursor-not-allowed opacity-60">Prev</button>
+<span class="px-2 py-1 text-primary font-bold">1</span>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-primary font-medium shadow-sm cursor-not-allowed opacity-60">Next</button>
+</div>
+</div>
+</div>
+<!-- Editorial Architecture Grid & Quick Setup Guides -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- High-Tech Propagation Map Preview (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex flex-col">
+<span class="text-caption font-caption text-outline uppercase tracking-wider">Global Latency &amp; Edge Relays</span>
+<span class="text-title-sm font-title-sm text-primary font-semibold">Anycast Node Distribution</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-primary text-caption font-caption font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>
+            18 Nodes Synced
+          </span>
+</div>
+<!-- Simulated Visual Topology Grid -->
+<div class="relative w-full h-44 rounded-xl bg-primary overflow-hidden p-space-md flex flex-col justify-between text-on-primary">
+<!-- Background decorative graph styling -->
+<div class="absolute inset-0 opacity-15">
+<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="20" id="grid" patternunits="userSpaceOnUse" width="20">
+<path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="relative z-10 flex items-center justify-between text-caption font-caption">
+<span class="bg-primary-container px-2 py-1 rounded text-primary-fixed-dim">Node: US-EAST (Virginia)</span>
+<span class="text-tertiary-fixed font-mono font-semibold">TTL: 300s • Response: 9ms</span>
+</div>
+<!-- Pulsing Map Points -->
+<div class="relative z-10 grid grid-cols-3 gap-2">
+<div class="bg-primary-container/80 backdrop-blur-sm p-2 rounded-lg flex flex-col">
+<span class="text-caption font-caption text-primary-fixed-dim">Frankfurt (FRA)</span>
+<span class="text-label-md font-label-md font-bold text-on-primary">12 ms</span>
+</div>
+<div class="bg-primary-container/80 backdrop-blur-sm p-2 rounded-lg flex flex-col">
+<span class="text-caption font-caption text-primary-fixed-dim">Singapore (SIN)</span>
+<span class="text-label-md font-label-md font-bold text-on-primary">24 ms</span>
+</div>
+<div class="bg-primary-container/80 backdrop-blur-sm p-2 rounded-lg flex flex-col">
+<span class="text-caption font-caption text-primary-fixed-dim">Tokyo (NRT)</span>
+<span class="text-label-md font-label-md font-bold text-on-primary">29 ms</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md flex items-center justify-between text-caption font-caption text-outline">
+<span>Nameserver queries cached globally every 5 minutes.</span>
+<span class="text-secondary font-semibold cursor-pointer hover:underline">Flush Edge Cache</span>
+</div>
+</div>
+<!-- Quick Guidance & Records Legend (5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<span class="text-caption font-caption text-outline uppercase tracking-wider">DNS Configuration Guide</span>
+<h3 class="text-title-sm font-title-sm text-primary font-semibold mt-1">Recommended Record Routing</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-space-xs">
+            Point your domain registrar to our authoritative Anycast servers or use manual CNAME/A records.
+          </p>
+<div class="mt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low text-body-sm font-body-sm">
+<div class="flex items-center gap-space-sm">
+<span class="px-1.5 py-0.5 rounded text-caption font-caption font-bold bg-primary-fixed text-primary">A</span>
+<span class="font-mono text-code-sm font-code-sm text-primary font-semibold">@ (apex)</span>
+</div>
+<span class="font-mono text-code-sm font-code-sm text-on-surface-variant">192.0.2.144</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low text-body-sm font-body-sm">
+<div class="flex items-center gap-space-sm">
+<span class="px-1.5 py-0.5 rounded text-caption font-caption font-bold bg-secondary-fixed text-secondary">CNAME</span>
+<span class="font-mono text-code-sm font-code-sm text-primary font-semibold">www</span>
+</div>
+<span class="font-mono text-code-sm font-code-sm text-on-surface-variant">apexdesign.io.</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low text-body-sm font-body-sm">
+<div class="flex items-center gap-space-sm">
+<span class="px-1.5 py-0.5 rounded text-caption font-caption font-bold bg-surface-container-high text-outline">MX</span>
+<span class="font-mono text-code-sm font-code-sm text-primary font-semibold">mail</span>
+</div>
+<span class="font-mono text-code-sm font-code-sm text-on-surface-variant">mail.cloudhost.net (10)</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between">
+<span class="text-caption font-caption text-outline">Need manual verification TXT records?</span>
+<button class="text-label-sm font-label-sm text-secondary font-semibold hover:underline" onclick="openDnsModal('apexdesign.io')" type="button">
+            View Records Archive →
+          </button>
+</div>
+</div>
+</div>
+<!-- Bottom Request Additional Domain Banner -->
+<div class="relative overflow-hidden bg-primary rounded-xl p-space-lg md:p-space-xl text-on-primary shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg">
+<!-- Visual geometric accent overlay -->
+<div class="absolute -right-10 -bottom-10 w-64 h-64 bg-secondary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-md z-10 max-w-2xl">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-secondary flex items-center justify-center flex-shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-2xl">add_moderator</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-caption font-caption text-primary-fixed-dim uppercase tracking-wider font-semibold">Expansion &amp; Quota</span>
+<h2 class="text-headline-md font-headline-md text-on-primary font-bold">Need to connect a new custom domain?</h2>
+<p class="text-body-sm font-body-sm text-primary-fixed-dim">
+            Request an additional domain assignment from your administrator. Upgrades are provisioned within 15 minutes with complimentary SSL certification and dedicated DNS zones.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm flex-shrink-0 z-10 w-full md:w-auto">
+<button class="w-full md:w-auto px-space-xl py-3 rounded-xl bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:bg-secondary-container transition-all shadow-md text-center" onclick="document.getElementById('requestModal').classList.remove('hidden')" type="button">
+          Request Domain
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive Slide-Over / Modal: DNS Zone Records Sheet -->
+<div class="fixed inset-0 z-50 hidden bg-primary/40 backdrop-blur-sm flex items-center justify-center p-4" id="dnsModal">
+<div class="bg-surface-container-lowest rounded-xl shadow-xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[921px]">
+<!-- Modal Header -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded-lg bg-surface-container text-secondary material-symbols-outlined text-xl">dns</span>
+<div class="flex flex-col">
+<h3 class="text-headline-md font-headline-md text-primary font-bold">DNS Routing Records</h3>
+<span class="text-caption font-caption text-outline" id="dnsModalSubtitle">Zone apexdesign.io</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" onclick="closeDnsModal()" type="button">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-space-lg overflow-y-auto flex flex-col gap-space-md">
+<div class="flex items-center justify-between bg-surface-container-low px-space-md py-2 rounded-lg text-caption font-caption text-outline">
+<span>Authoritative Nameserver: ns1.cloudhost.net</span>
+<span class="text-tertiary font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+            Synchronized
+          </span>
+</div>
+<!-- DNS Records Mock Table -->
+<div class="w-full overflow-x-auto rounded-lg">
+<table class="w-full text-left border-collapse text-body-sm font-body-sm">
+<thead>
+<tr class="bg-surface-container text-caption font-caption text-outline uppercase tracking-wider">
+<th class="py-2.5 px-3">Type</th>
+<th class="py-2.5 px-3">Host Name</th>
+<th class="py-2.5 px-3">Points To / Content</th>
+<th class="py-2.5 px-3">TTL</th>
+<th class="py-2.5 px-3 text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<tr class="hover:bg-surface-container-low/40">
+<td class="py-3 px-3"><span class="px-1.5 py-0.5 rounded text-caption font-caption font-bold bg-primary-fixed text-primary">A</span></td>
+<td class="py-3 px-3 font-mono font-semibold text-primary">@</td>
+<td class="py-3 px-3 font-mono text-outline">192.0.2.144</td>
+<td class="py-3 px-3 text-outline">300s</td>
+<td class="py-3 px-3 text-right"><span class="text-caption font-caption text-tertiary font-bold">Active</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low/40">
+<td class="py-3 px-3"><span class="px-1.5 py-0.5 rounded text-caption font-caption font-bold bg-secondary-fixed text-secondary">CNAME</span></td>
+<td class="py-3 px-3 font-mono font-semibold text-primary">www</td>
+<td class="py-3 px-3 font-mono text-outline">apexdesign.io.</td>
+<td class="py-3 px-3 text-outline">300s</td>
+<td class="py-3 px-3 text-right"><span class="text-caption font-caption text-tertiary font-bold">Active</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low/40">
+<td class="py-3 px-3"><span class="px-1.5 py-0.5 rounded text-caption font-caption font-bold bg-surface-container-high text-primary">MX</span></td>
+<td class="py-3 px-3 font-mono font-semibold text-primary">mail</td>
+<td class="py-3 px-3 font-mono text-outline">mail.cloudhost.net (Pri 10)</td>
+<td class="py-3 px-3 text-outline">3600s</td>
+<td class="py-3 px-3 text-right"><span class="text-caption font-caption text-tertiary font-bold">Active</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low/40">
+<td class="py-3 px-3"><span class="px-1.5 py-0.5 rounded text-caption font-caption font-bold bg-surface-container-highest text-outline">TXT</span></td>
+<td class="py-3 px-3 font-mono font-semibold text-primary">@</td>
+<td class="py-3 px-3 font-mono text-outline truncate max-w-xs">v=spf1 include:_spf.cloudhost.net ~all</td>
+<td class="py-3 px-3 text-outline">3600s</td>
+<td class="py-3 px-3 text-right"><span class="text-caption font-caption text-tertiary font-bold">Active</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<span class="text-caption font-caption text-outline">Record changes can take up to 24 hours to propagate globally.</span>
+<button class="px-space-lg py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors" onclick="closeDnsModal()" type="button">
+          Close Inspector
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive Slide-Over / Modal: Request Domain Modal -->
+<div class="fixed inset-0 z-50 hidden bg-primary/40 backdrop-blur-sm flex items-center justify-center p-4" id="requestModal">
+<div class="bg-surface-container-lowest rounded-xl shadow-xl w-full max-w-md overflow-hidden flex flex-col">
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-2xl">domain_add</span>
+<h3 class="text-headline-md font-headline-md text-primary font-bold">Request Domain Slot</h3>
+</div>
+<button class="p-1 rounded-lg text-outline hover:text-primary" onclick="document.getElementById('requestModal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<form class="p-space-lg flex flex-col gap-space-md" id="requestDomainForm" onsubmit="handleRequestSubmit(event)">
+<div class="flex flex-col gap-1">
+<label class="text-label-sm font-label-sm text-primary font-semibold" for="newDomainInput">Domain Name to Connect</label>
+<input class="h-10 px-3 rounded-lg bg-surface-container-low text-on-surface text-body-sm font-body-sm placeholder:text-outline focus:outline-none focus:bg-surface-container" id="newDomainInput" placeholder="example.com" required="" type="text"/>
+<span class="text-caption font-caption text-outline">Enter FQDN without protocol (http/https).</span>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-label-sm font-label-sm text-primary font-semibold" for="intentReason">Purpose of Domain</label>
+<select class="h-10 px-3 rounded-lg bg-surface-container-low text-on-surface text-body-sm font-body-sm focus:outline-none focus:bg-surface-container" id="intentReason">
+<option>Primary Web Property</option>
+<option>Marketing Landing Page</option>
+<option>Dedicated Mail Gateway</option>
+<option>Staging &amp; QA Environment</option>
+</select>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg text-caption font-caption text-outline">
+          Your current plan allows 3 more domain allocations at no extra cost.
+        </div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-xl text-label-sm font-label-sm text-outline hover:text-primary" onclick="document.getElementById('requestModal').classList.add('hidden')" type="button">
+            Cancel
+          </button>
+<button class="px-space-lg py-2 rounded-xl bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:bg-secondary-container transition-all" type="submit">
+            Submit Request
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Inline Micro-Interactions Script -->
+<script>
+    // Search Filtering
+    const searchInput = document.getElementById('domainSearchInput');
+    const tableRows = document.querySelectorAll('.domain-row');
+    const noResults = document.getElementById('noDomainsFound');
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      tableRows.forEach(row => {
+        const domain = row.getAttribute('data-domain').toLowerCase();
+        if (domain.includes(query)) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+        noResults.classList.add('flex');
+      } else {
+        noResults.classList.add('hidden');
+        noResults.classList.remove('flex');
+      }
+    });
+
+    // Filter Buttons logic
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => {
+          t.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+          t.classList.add('text-outline');
+        });
+        tab.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+        tab.classList.remove('text-outline');
+
+        const filter = tab.getAttribute('data-filter');
+        let count = 0;
+        tableRows.forEach(row => {
+          const status = row.getAttribute('data-status');
+          if (filter === 'all' || status === filter) {
+            row.style.display = '';
+            count++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        if (count === 0) {
+          noResults.classList.remove('hidden');
+          noResults.classList.add('flex');
+        } else {
+          noResults.classList.add('hidden');
+          noResults.classList.remove('flex');
+        }
+      });
+    });
+
+    // Refresh telemetry micro-interaction
+    const refreshBtn = document.getElementById('refreshHealthBtn');
+    refreshBtn.addEventListener('click', () => {
+      refreshBtn.classList.add('opacity-70', 'pointer-events-none');
+      setTimeout(() => {
+        refreshBtn.classList.remove('opacity-70', 'pointer-events-none');
+      }, 700);
+    });
+
+    // Modal Control functions
+    function openDnsModal(domainName) {
+      document.getElementById('dnsModalSubtitle').textContent = 'Zone ' + domainName;
+      document.getElementById('dnsModal').classList.remove('hidden');
+    }
+
+    function closeDnsModal() {
+      document.getElementById('dnsModal').classList.add('hidden');
+    }
+
+    function handleRequestSubmit(e) {
+      e.preventDefault();
+      const domainVal = document.getElementById('newDomainInput').value;
+      alert('Request dispatched for ' + domainVal + '. An infrastructure administrator will confirm allocation within 15 minutes.');
+      document.getElementById('requestModal').classList.add('hidden');
+      document.getElementById('requestDomainForm').reset();
+    }
+  </script>
+</div></main></div></body></html>

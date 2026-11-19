@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline":"#747780","primary-fixed":"#d8e2ff","on-primary":"#ffffff","surface-tint":"#475e8c","outline-variant":"#c4c6d0","on-primary-container":"#8ba2d5","on-secondary":"#ffffff","inverse-surface":"#213145","on-secondary-fixed":"#00174b","primary-container":"#1f3864","on-error-container":"#93000a","error-container":"#ffdad6","on-tertiary-fixed":"#002114","primary-fixed-dim":"#afc6fb","on-primary-fixed-variant":"#2e4673","on-secondary-container":"#fefcff","on-primary-fixed":"#001a41","error":"#ba1a1a","secondary":"#0051d5","surface":"#f8f9ff","on-tertiary-fixed-variant":"#005137","surface-container":"#e5eeff","tertiary-container":"#00422c","on-surface-variant":"#44474f","surface-container-lowest":"#ffffff","inverse-primary":"#afc6fb","secondary-fixed-dim":"#b4c5ff","surface-container-low":"#eff4ff","tertiary-fixed-dim":"#68dba9","surface-bright":"#f8f9ff","on-tertiary":"#ffffff","secondary-container":"#316bf3","surface-container-high":"#dce9ff","surface-container-highest":"#d3e4fe","on-tertiary-container":"#3fb687","tertiary-fixed":"#85f8c4","surface-variant":"#d3e4fe","secondary-fixed":"#dbe1ff","on-surface":"#0b1c30","background":"#f8f9ff","tertiary":"#002a1a","on-secondary-fixed-variant":"#003ea8","on-background":"#0b1c30","on-error":"#ffffff","primary":"#03224d","inverse-on-surface":"#eaf1ff","surface-dim":"#cbdbf5"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"margin-sm":"1rem","gutter-sm":"1rem","space-md":"1rem","space-sm":"0.5rem","space-xs":"0.25rem","gutter":"1.5rem","space-xl":"2rem","space-lg":"1.5rem","margin":"2rem"},fontFamily:{"caption":["Inter"],"headline-md":["Inter"],"label-md":["Inter"],"headline-lg-mobile":["Inter"],"title-sm":["Inter"],"display-lg":["Inter"],"label-sm":["Inter"],"body-sm":["Inter"],"body-md":["Inter"],"code-sm":["Inter"],"body-lg":["Inter"],"headline-lg":["Inter"]},fontSize:{"caption":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-md":["18px",{"lineHeight":"26px","letterSpacing":"-0.015em","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"title-sm":["15px",{"lineHeight":"22px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.025em","fontWeight":"700"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"body-lg":["15px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-primary z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-gutter flex items-center gap-space-sm bg-primary"><img alt="Modern geometric cloud infrastructure hexagon icon with server nodes and high-speed network connections, deep navy and vibrant cobalt blue. Brand logo. - Primary color: #1f3864
+- Font: inter
+- Mode: light
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UHLZQAJCLxMo0ftLj4ORVVkOTO4vMKIVs7Kv7zzh0G1BB7zvo5NbDu8ASRxYvjGip68_NYgZ605kX80rlSHkEU0W3IzT08uA8iIKg7s_FfoucY8d1LI_odTY_Z9tcwCC4E4miRXamKLpdUjMxiJ6-6j3PbjwXTUyr96GVYn9u2FuRmSE59Yq-FV4NxOnfxn82rXi1d3mT5hTbrj-F41fXJQdyPN4Bhs_dM5jht745E4L5PaKII0StL0Q"/><div class="flex flex-col"><span class="text-title-sm font-title-sm text-on-primary font-semibold leading-tight">CloudHost</span><span class="text-caption font-caption text-primary-fixed-dim uppercase tracking-wider">Client Portal</span></div></div><div class="px-gutter pt-space-lg pb-space-xs"><span class="text-caption font-caption uppercase tracking-wider text-outline-variant font-semibold">Hosting Core</span></div><nav class="flex flex-col gap-1 px-space-sm" data-active-classes="bg-secondary text-on-secondary font-label-md text-label-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-colors bg-secondary text-on-secondary font-label-md text-label-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-path="dashboard" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="my-domains" href="#"><span class="material-symbols-outlined text-lg">language</span><span>My Domains</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="email-accounts" href="#"><span class="material-symbols-outlined text-lg">mail</span><span>Email Accounts</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="webmail-access" href="#"><span class="material-symbols-outlined text-lg">open_in_new</span><span>Webmail Access</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="packages-and-upgrade" href="#"><span class="material-symbols-outlined text-lg">bolt</span><span>Packages &amp; Upgrade</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="account-settings" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Account Settings</span></a></nav></div><div class="p-space-md flex flex-col gap-space-sm"><div class="bg-primary-container rounded-xl p-space-md flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="text-caption font-caption text-primary-fixed-dim uppercase">Storage Quota</span><span class="text-caption font-caption text-primary-fixed font-semibold">32%</span></div><div class="w-full h-1.5 bg-primary rounded-full overflow-hidden"><div class="h-full bg-secondary-fixed w-1/3 rounded-full"></div></div><div class="flex justify-between items-center pt-space-xs"><span class="text-caption font-caption text-primary-fixed-dim">3.2 GB / 10 GB used</span></div></div><div class="pt-space-xs flex flex-col gap-1"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-primary-fixed hover:bg-primary-container hover:text-on-primary transition-colors text-label-md font-label-md" data-path="support-tickets" href="#"><span class="material-symbols-outlined text-lg">support_agent</span><span>Support Ticket</span></a></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl z-40 flex items-center justify-between px-gutter shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-gutter"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-lg pointer-events-none">search</span><input class="w-80 h-9 pl-9 pr-14 bg-surface-container-low text-on-surface rounded-xl border-0 focus:outline-none focus:bg-surface-container text-body-sm font-body-sm placeholder:text-outline" placeholder="Search domains, mailboxes, dns..." type="text"/><div class="absolute right-2 px-1.5 py-0.5 bg-surface-container rounded text-caption font-caption text-outline">⌘K</div></div><div class="hidden xl:flex items-center gap-space-xs bg-surface-container px-space-md py-1 rounded-full text-caption font-caption text-on-surface"><span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span><span class="font-semibold text-primary">Cloud Business</span><span class="text-outline-variant">•</span><span class="text-on-surface-variant">3 Domains</span><span class="text-outline-variant">•</span><span class="text-on-surface-variant">12 Mailboxes</span></div></div><div class="flex items-center gap-space-md"><button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span></button><div class="h-6 w-px bg-surface-container"></div><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XxZEq0yqsxY-aIxJ7jLZ3GEnnvjhuk1d3fqr1tG3_hWz4KMwnWomCcxIb4zxDFqpxOHzAPGS0EuNHmrGIlLj10XxjIioBjd7dTfn5XylzALvY-ERJTsDbkA7bMhaiWpSVkc-a1lVE67kCiGbTVnxmuCu2K-Aywob57_1vTR6cPv7kx0Olyyh0Dfw1GC9ArcB138-AMyfcC7OZpIGRHdnB7oiEfJvbAwgH_ApZzqU8Q45REjbPEwCJV9-Y"/><div class="hidden sm:flex flex-col text-left"><span class="text-label-md font-label-md text-on-surface font-semibold leading-tight">Alexander Wright</span><span class="text-caption font-caption text-on-surface-variant">Account Owner</span></div></div><a class="flex items-center gap-1 text-label-sm font-label-sm text-outline hover:text-error transition-colors px-2 py-1 rounded-lg ml-space-xs" data-path="login" href="#"><span class="material-symbols-outlined text-base">logout</span><span class="hidden md:inline">Log out</span></a></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full">
+<!-- Top Operational Banner & Visual Context Header -->
+<div class="px-gutter py-space-lg flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-caption font-caption text-outline">
+<span>Architecture &amp; Ops</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span>Orchestration</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-secondary font-semibold">End-to-End Workflow Diagram</span>
+</div>
+<div class="flex items-baseline gap-space-md">
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight">End-to-End System Operational Workflow</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-secondary text-caption font-caption">v4.2-STABLE</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-3xl">
+          Visualized operational execution plan detailing actor interactions, asynchronous server hooks, and deterministic lifecycle states from tenant provisioning to resource auto-scaling.
+        </p>
+</div>
+<!-- Live Execution Telemetry Pill -->
+<div class="flex items-center gap-space-md bg-surface-container-lowest p-space-sm rounded-xl shadow-sm">
+<div class="flex items-center gap-space-xs px-3 py-1.5 bg-surface-container-low rounded-lg">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed-dim opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-tertiary-container"></span>
+</span>
+<span class="text-caption font-caption text-on-surface font-semibold">Orchestrator Online</span>
+</div>
+<div class="h-6 w-px bg-surface-container"></div>
+<div class="flex flex-col text-right">
+<span class="text-caption font-caption text-outline">Cluster Latency</span>
+<span class="text-label-sm font-label-sm font-semibold text-primary">18.4ms</span>
+</div>
+</div>
+</div>
+<!-- Filter Bar & Actor Legend System -->
+<div class="mt-space-sm flex flex-wrap items-center justify-between gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<!-- Actor Role Legend -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="text-caption font-caption text-outline uppercase tracking-wider pr-space-xs">Actor Roles:</span>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-on-primary text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">shield_person</span>
+<span>SuperAdmin</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container text-tertiary-fixed text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">person</span>
+<span>Tenant / User</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary text-on-secondary text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">precision_manufacturing</span>
+<span>Automated Daemon</span>
+</div>
+</div>
+<!-- Interactive Filters -->
+<div class="flex items-center gap-1 bg-surface-container p-1 rounded-xl" id="filter-container">
+<button class="filter-btn active px-3 py-1 rounded-lg text-label-sm font-label-sm bg-surface-container-lowest text-primary shadow-sm transition-all" data-filter="all" type="button">All 12 Steps</button>
+<button class="filter-btn px-3 py-1 rounded-lg text-label-sm font-label-sm text-outline hover:text-primary transition-all" data-filter="admin" type="button">Admin Only</button>
+<button class="filter-btn px-3 py-1 rounded-lg text-label-sm font-label-sm text-outline hover:text-primary transition-all" data-filter="user" type="button">Tenant Only</button>
+<button class="filter-btn px-3 py-1 rounded-lg text-label-sm font-label-sm text-outline hover:text-primary transition-all" data-filter="system" type="button">Automated Hooks</button>
+</div>
+</div>
+</div>
+<!-- Main Pipeline Architecture Canvas -->
+<div class="px-gutter pb-space-xl flex flex-col gap-space-xl">
+<!-- ========================================== -->
+<!-- PHASE 1: ADMIN ONBOARDING & PROVISIONING -->
+<!-- ========================================== -->
+<section class="flex flex-col gap-space-md" data-phase="1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-on-primary font-headline-md text-headline-md">1</div>
+<div class="flex flex-col">
+<h2 class="text-title-sm font-title-sm text-primary uppercase tracking-wide">Phase 01: Admin Onboarding &amp; Provisioning</h2>
+<span class="text-caption font-caption text-outline">Initial orchestration, workspace containment &amp; multi-zone DNS routing setup</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-caption font-caption bg-surface-container text-primary font-semibold">4 Sequence Units</span>
+</div>
+<!-- Phase 1 Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter relative">
+<!-- Step 1 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="admin">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 01</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container text-primary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">shield</span> Manual Admin
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-primary text-on-primary">
+<span class="material-symbols-outlined text-lg">admin_panel_settings</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Admin Authentication</h3>
+<span class="text-caption font-caption text-outline">Actor: Enterprise SuperAdmin</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Privileged operator securely authenticates via Enterprise Portal applying FIDO2 WebAuthn &amp; hardware token MFA.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">AUTH MODULE</span>
+<span class="text-tertiary-container font-semibold">VERIFIED</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">POST /auth/v2/super-mfa [200 OK]</code>
+</div>
+<!-- Connecting pipeline arrow hint -->
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>creates &amp; allocates</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Step 2 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="admin">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 02</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container text-primary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">shield</span> Manual Admin
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-primary text-on-primary">
+<span class="material-symbols-outlined text-lg">person_add</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Tenant Creation &amp; Allocation</h3>
+<span class="text-caption font-caption text-outline">Actor: Enterprise SuperAdmin</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Provisions tenant identity profile <span class="font-semibold text-primary">alex@hyperlink.dev</span> and binds <span class="font-semibold text-secondary">Cloud Business Tier</span> policy limits.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">POLICY BINDING</span>
+<span class="text-primary font-semibold">10GB / 12 MBX</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">POST /api/v1/tenants {tier: "biz"}</code>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>assigns domain</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Step 3 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="admin">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 03</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container text-primary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">shield</span> Manual Admin
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-primary text-on-primary">
+<span class="material-symbols-outlined text-lg">language</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Apex Domain Assignment</h3>
+<span class="text-caption font-caption text-outline">Actor: Enterprise SuperAdmin</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Attaches host domain <span class="font-semibold text-primary">apexdesign.io</span> to tenant cgroup isolation context with dedicated vhost configuration.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">VIRTUAL HOST</span>
+<span class="text-secondary font-semibold">ATTACHED</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">PUT /vhosts/apexdesign.io/bind</code>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>configures records</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Step 4 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="admin">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 04</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container text-primary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">shield</span> Manual Admin
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-primary text-on-primary">
+<span class="material-symbols-outlined text-lg">alt_route</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Authoritative DNS Zone Config</h3>
+<span class="text-caption font-caption text-outline">Actor: Enterprise SuperAdmin</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Generates comprehensive DNS zone bundle including Anycast A records, MX routing, DKIM-2048 keys, SPF, and DMARC enforcement.
+            </p>
+</div>
+<!-- DNS Record Mini-Chips -->
+<div class="mt-space-md grid grid-cols-3 gap-1 bg-surface-container-low p-2 rounded-lg text-code-sm font-code-sm">
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-center font-bold text-secondary">A: 198.51</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-center font-bold text-primary">MX: 10</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-center font-bold text-tertiary-container">DKIM: OK</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>zone propagated</span>
+<span class="material-symbols-outlined text-base group-hover:translate-y-1 transition-transform">south</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Phase Connector Visualizer 1 -> 2 -->
+<div class="flex items-center justify-center gap-space-md py-space-xs">
+<div class="h-px bg-surface-container flex-1"></div>
+<div class="flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container text-caption font-caption text-outline font-semibold">
+<span class="material-symbols-outlined text-sm">sync_alt</span>
+<span>Transition to Identity Activation Handshake</span>
+</div>
+<div class="h-px bg-surface-container flex-1"></div>
+</div>
+<!-- ========================================== -->
+<!-- PHASE 2: TENANT ACTIVATION & IDENTITY -->
+<!-- ========================================== -->
+<section class="flex flex-col gap-space-md" data-phase="2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container text-primary font-headline-md text-headline-md">2</div>
+<div class="flex flex-col">
+<h2 class="text-title-sm font-title-sm text-primary uppercase tracking-wide">Phase 02: Tenant Activation &amp; Identity</h2>
+<span class="text-caption font-caption text-outline">Asynchronous cryptographic token distribution and first-time tenant perimeter onboarding</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-caption font-caption bg-surface-container text-primary font-semibold">2 Sequence Units</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Step 5 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="system">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 05</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">bolt</span> Automated Daemon
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-secondary text-on-secondary">
+<span class="material-symbols-outlined text-lg">forward_to_inbox</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Secure Credential Dispatch</h3>
+<span class="text-caption font-caption text-outline">Actor: System Event Bus / Mailer Service</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Automated high-priority transactional worker generates ephemeral AES-256 activation token, issuing magic link and portal entry keys to <span class="font-semibold text-primary">alex@hyperlink.dev</span>.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">TOKEN VALIDITY</span>
+<span class="text-secondary font-semibold">TTL: 24h</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">EVENT dispatch.invite [status: 250 Sent]</code>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>dispatches credentials</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Step 6 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="user">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 06</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary text-tertiary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">how_to_reg</span> Tenant Action
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-tertiary-container text-tertiary-fixed">
+<span class="material-symbols-outlined text-lg">passkey</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Tenant Portal Authentication</h3>
+<span class="text-caption font-caption text-outline">Actor: Authenticated Tenant User</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Tenant verifies single-use token, provisions primary master passphrase, initializes cryptographic session, and enters the self-service management console.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">SESSION VAULT</span>
+<span class="text-tertiary-container font-semibold">ACTIVE JWT</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">AUTH /session/start [role: client_owner]</code>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>authenticates session</span>
+<span class="material-symbols-outlined text-base group-hover:translate-y-1 transition-transform">south</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Phase Connector Visualizer 2 -> 3 -->
+<div class="flex items-center justify-center gap-space-md py-space-xs">
+<div class="h-px bg-surface-container flex-1"></div>
+<div class="flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container text-caption font-caption text-outline font-semibold">
+<span class="material-symbols-outlined text-sm">storage</span>
+<span>Transition to Mailbox Cluster Real-time Provisioning</span>
+</div>
+<div class="h-px bg-surface-container flex-1"></div>
+</div>
+<!-- =================================================== -->
+<!-- PHASE 3: SERVICE UTILIZATION & AUTO PROVISIONING -->
+<!-- =================================================== -->
+<section class="flex flex-col gap-space-md" data-phase="3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container text-primary font-headline-md text-headline-md">3</div>
+<div class="flex flex-col">
+<h2 class="text-title-sm font-title-sm text-primary uppercase tracking-wide">Phase 03: Service Utilization &amp; Automatic Provisioning</h2>
+<span class="text-caption font-caption text-outline">Self-service mailbox instantiations, real-time daemon filesystem allocation, and IMAP access</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-caption font-caption bg-surface-container text-primary font-semibold">4 Sequence Units</span>
+</div>
+<!-- Phase 3 Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Step 7 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="user">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 07</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary text-tertiary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">how_to_reg</span> Tenant Action
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-tertiary-container text-tertiary-fixed">
+<span class="material-symbols-outlined text-lg">mark_email_read</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Mailbox Creation Request</h3>
+<span class="text-caption font-caption text-outline">Actor: Tenant User</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Tenant configures mailbox identifier <span class="font-semibold text-primary">alex@apexdesign.io</span> and assigns 2048MB quota boundary via interactive control.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">QUOTA SLIDER</span>
+<span class="text-secondary font-semibold">2,048 MB</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">POST /api/v1/mailboxes {alloc: 2GB}</code>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>requests mailbox</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Step 8 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="system">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 08</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">bolt</span> Automated Daemon
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-secondary text-on-secondary">
+<span class="material-symbols-outlined text-lg">terminal</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Server Auto-Provisioning</h3>
+<span class="text-caption font-caption text-outline">Actor: Dovecot / Postfix Daemon</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Background workers initialize Maildir directory tree, inject Postgres virtual_users tuple, and generate Let's Encrypt SNI TLS certificates.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">DAEMON RESPONSE</span>
+<span class="text-tertiary-container font-semibold">200 PROVISIONED</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">EXEC mkdir /var/mail/vhosts/apexdesign</code>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>provisions automatically</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Step 9 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="user">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 09</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary text-tertiary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">how_to_reg</span> Tenant Action
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-tertiary-container text-tertiary-fixed">
+<span class="material-symbols-outlined text-lg">all_inbox</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Webmail &amp; Client Access</h3>
+<span class="text-caption font-caption text-outline">Actor: Tenant User</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              User logs into webmail client or connects Apple Mail/Thunderbird over TLS (IMAP 993 / SMTP Submission 587) with instantaneous bidirectional sync.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">PROTOCOLS</span>
+<span class="text-primary font-semibold">IMAPS / SMTPS</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">CONNECT imap.cloudhost.net:993</code>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>accesses webmail</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Step 10 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="user">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 10</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary text-tertiary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">how_to_reg</span> Tenant Action
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-tertiary-container text-tertiary-fixed">
+<span class="material-symbols-outlined text-lg">tune</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Self-Service Security Mgmt</h3>
+<span class="text-caption font-caption text-outline">Actor: Tenant User</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Direct self-service management: user updates mailbox credentials, manages sieve forwarding rules, spam thresholds, and vacation responders.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">SIEVE FILTERS</span>
+<span class="text-tertiary-container font-semibold">ACTIVE</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">PUT /api/v1/mailboxes/rules [204 OK]</code>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>manages settings</span>
+<span class="material-symbols-outlined text-base group-hover:translate-y-1 transition-transform">south</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Phase Connector Visualizer 3 -> 4 -->
+<div class="flex items-center justify-center gap-space-md py-space-xs">
+<div class="h-px bg-surface-container flex-1"></div>
+<div class="flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container text-caption font-caption text-outline font-semibold">
+<span class="material-symbols-outlined text-sm">upgrade</span>
+<span>Transition to Resource Capacity Limits &amp; Elastic Expansion</span>
+</div>
+<div class="h-px bg-surface-container flex-1"></div>
+</div>
+<!-- ========================================== -->
+<!-- PHASE 4: SCALING & RESOURCE LIFECYCLE -->
+<!-- ========================================== -->
+<section class="flex flex-col gap-space-md" data-phase="4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container text-primary font-headline-md text-headline-md">4</div>
+<div class="flex flex-col">
+<h2 class="text-title-sm font-title-sm text-primary uppercase tracking-wide">Phase 04: Scaling &amp; Resource Lifecycle</h2>
+<span class="text-caption font-caption text-outline">Telemetry threshold triggering, upgrade workflows, and instantaneous storage re-partitioning</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-caption font-caption bg-surface-container text-primary font-semibold">2 Sequence Units</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Step 11 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="user">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 11</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary text-tertiary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">trending_up</span> Tenant Action
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-tertiary-container text-tertiary-fixed">
+<span class="material-symbols-outlined text-lg">data_usage</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Quota Limit Alert &amp; Upgrade Request</h3>
+<span class="text-caption font-caption text-outline">Actor: Tenant User</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              System flags 90% allocation limit on <span class="font-semibold text-error">Cloud Business Tier</span>. Tenant initiates self-service upgrade flow to <span class="font-semibold text-secondary">Cloud Pro (50GB NVMe)</span>.
+            </p>
+</div>
+<!-- Progress Mini Gauge -->
+<div class="mt-space-md bg-surface-container-low p-2 rounded-lg flex flex-col gap-1.5">
+<div class="flex justify-between text-caption font-caption">
+<span class="text-outline">Storage Threshold</span>
+<span class="text-error font-semibold">9.1 GB / 10 GB (91%)</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error w-11/12 rounded-full"></div>
+</div>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-secondary">
+<span>submits upgrade request</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Step 12 Card -->
+<div class="workflow-card relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all group" data-actor="admin">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-secondary font-bold">STEP 12</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container text-primary-fixed text-caption font-caption">
+<span class="material-symbols-outlined text-xs">verified</span> Admin / Auto Webhook
+              </span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<div class="p-2 rounded-lg bg-primary text-on-primary">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md font-semibold text-primary">Approval &amp; Dynamic Expansion</h3>
+<span class="text-caption font-caption text-outline">Actor: SuperAdmin / Stripe Webhook Engine</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Payment clears via Stripe event hook or 1-click SuperAdmin authorization. ZFS filesystem pool expands quotas on-the-fly without container restart or downtime.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-code-sm font-code-sm">
+<span class="text-outline">SYSTEM STATUS</span>
+<span class="text-tertiary-container font-semibold">EXPANSION APPLIED</span>
+</div>
+<code class="text-code-sm font-code-sm text-primary truncate">EXEC zfs set quota=50G pool/tenants/alex</code>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption font-caption text-tertiary-container font-semibold">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">task_alt</span>
+<span>Lifecycle Complete &amp; Healthy</span>
+</span>
+<span class="text-caption font-caption text-outline">Loop Active</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Operational Payload & Architecture Technical Matrix -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl">dataset</span>
+<h3 class="text-title-sm font-title-sm text-primary">Daemon &amp; Protocol Execution Reference</h3>
+</div>
+<div class="flex items-center gap-space-xs text-caption font-caption text-outline">
+<span>Target Architecture: Ubuntu 24.04 LTS / Postfix 3.8 / Dovecot 2.3 / ZFS on Linux</span>
+</div>
+</div>
+<!-- Compact Technical Data Table -->
+<div class="overflow-x-auto rounded-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-caption font-caption text-outline uppercase">
+<th class="py-2.5 px-3">Lifecycle Phase</th>
+<th class="py-2.5 px-3">Involved Subsystem</th>
+<th class="py-2.5 px-3">Underlying Daemon / Protocol</th>
+<th class="py-2.5 px-3">State Transition</th>
+<th class="py-2.5 px-3 text-right">Audit Integrity</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm divide-y divide-surface-container-low">
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 font-semibold text-primary">Phase 1: Admin Onboard</td>
+<td class="py-3 px-3 text-on-surface-variant">Core Management API</td>
+<td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-caption font-caption bg-surface-container text-primary font-bold">BIND9 / PowerDNS</span></td>
+<td class="py-3 px-3 text-outline">Zone apex initialized &amp; replicated</td>
+<td class="py-3 px-3 text-right font-code-sm text-tertiary-container font-semibold">SIG-SHA256</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 font-semibold text-primary">Phase 2: Activation</td>
+<td class="py-3 px-3 text-on-surface-variant">Transactional Bus</td>
+<td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-caption font-caption bg-surface-container text-secondary font-bold">Postfix SMTP Outbound</span></td>
+<td class="py-3 px-3 text-outline">Magic-link token issued (TTL 24h)</td>
+<td class="py-3 px-3 text-right font-code-sm text-tertiary-container font-semibold">HMAC-VALID</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 font-semibold text-primary">Phase 3: Service Provision</td>
+<td class="py-3 px-3 text-on-surface-variant">Storage &amp; IMAP Node</td>
+<td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-caption font-caption bg-surface-container text-primary font-bold">Dovecot LDA / Certbot SNI</span></td>
+<td class="py-3 px-3 text-outline">Virtual Maildir partitioned with Let's Encrypt</td>
+<td class="py-3 px-3 text-right font-code-sm text-tertiary-container font-semibold">ENCRYPTED</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 font-semibold text-primary">Phase 4: Auto-Scaling</td>
+<td class="py-3 px-3 text-on-surface-variant">Kernel ZFS Volume Manager</td>
+<td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-caption font-caption bg-surface-container text-secondary font-bold">ZFS Dataset Controller</span></td>
+<td class="py-3 px-3 text-outline">Storage boundary expanded from 10G to 50G</td>
+<td class="py-3 px-3 text-right font-code-sm text-tertiary-container font-semibold">ATOMIC-OK</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Interactive JavaScript Filter Engine -->
+<script>
+    (function() {
+      const buttons = document.querySelectorAll('#filter-container .filter-btn');
+      const cards = document.querySelectorAll('.workflow-card');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Reset states
+          buttons.forEach(b => {
+            b.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+            b.classList.add('text-outline');
+          });
+
+          // Activate clicked button
+          button.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+          button.classList.remove('text-outline');
+
+          const filter = button.getAttribute('data-filter');
+
+          cards.forEach(card => {
+            const actor = card.getAttribute('data-actor');
+            if (filter === 'all' || actor === filter) {
+              card.classList.remove('opacity-25', 'scale-[0.98]', 'grayscale');
+              card.classList.add('opacity-100', 'scale-100');
+            } else {
+              card.classList.add('opacity-25', 'scale-[0.98]', 'grayscale');
+              card.classList.remove('opacity-100', 'scale-100');
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</div></main></div></body></html>

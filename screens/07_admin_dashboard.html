@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-dim":"#cbdbf5","secondary-container":"#316bf3","on-primary-fixed":"#001a41","on-secondary-container":"#fefcff","on-surface":"#0b1c30","on-tertiary-fixed":"#002114","secondary-fixed":"#dbe1ff","surface-container-highest":"#d3e4fe","tertiary-fixed":"#85f8c4","inverse-surface":"#213145","tertiary-fixed-dim":"#68dba9","surface-tint":"#475e8c","on-primary-fixed-variant":"#2e4673","on-primary":"#ffffff","on-secondary-fixed-variant":"#003ea8","on-background":"#0b1c30","surface-variant":"#d3e4fe","on-secondary-fixed":"#00174b","surface-container-low":"#eff4ff","outline-variant":"#c4c6d0","primary-fixed-dim":"#afc6fb","surface-container-high":"#dce9ff","inverse-primary":"#afc6fb","on-error":"#ffffff","primary-fixed":"#d8e2ff","secondary-fixed-dim":"#b4c5ff","tertiary-container":"#00422c","on-tertiary-container":"#3fb687","surface":"#f8f9ff","on-secondary":"#ffffff","tertiary":"#002a1a","secondary":"#0051d5","on-primary-container":"#8ba2d5","outline":"#747780","on-surface-variant":"#44474f","error":"#ba1a1a","surface-container-lowest":"#ffffff","on-error-container":"#93000a","error-container":"#ffdad6","on-tertiary-fixed-variant":"#005137","background":"#f8f9ff","surface-bright":"#f8f9ff","on-tertiary":"#ffffff","primary":"#03224d","primary-container":"#1f3864","inverse-on-surface":"#eaf1ff","surface-container":"#e5eeff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-lg":"1.5rem","margin":"2rem","space-xl":"2rem","space-xs":"0.25rem","space-sm":"0.5rem","margin-sm":"1rem","gutter":"1.5rem","gutter-sm":"1rem","space-md":"1rem"},"fontFamily":{"headline-md":["Inter"],"body-sm":["Inter"],"code-sm":["Inter"],"title-sm":["Inter"],"display-lg":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"],"body-md":["Inter"],"label-md":["Inter"],"caption":["Inter"],"headline-lg-mobile":["Inter"],"body-lg":["Inter"]},"fontSize":{"headline-md":["18px",{"lineHeight":"26px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"title-sm":["15px",{"lineHeight":"22px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.025em","fontWeight":"700"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"caption":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-lg":["15px",{"lineHeight":"24px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-primary text-on-primary-fixed z-50 flex flex-col justify-between border-r border-primary-container shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col min-h-0 flex-1"><div class="h-16 flex items-center gap-3 px-space-lg border-b border-primary-container shrink-0"><img alt="CloudHost Admin Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WPEGQ2IS0KUQSCx6F9GUVebvttaF8ZJlueAY1GgCKo9eH2N7pDSw5EJqXDNl4vfIo6XxwwE1-xs0JxHpy7h0EqjY69qpzlNJkM_KoWxFYctzFNYKSaDT6uJtNa49Jr6UFtuUubMnrMueMNKP3PnuZ7V6lexQE0hIBktD19KeXH6xCbadcjNNhr-ImFBrREA9qKOICo830om6BPwbMOnMpZXTVjaE0EV2Z8WZhtBsEJLkinF60woRtjyiI"/><div class="flex flex-col"><span class="font-title-sm text-title-sm text-on-primary tracking-tight font-semibold">CloudHost</span><span class="font-caption text-caption text-primary-fixed-dim uppercase tracking-wider">Enterprise CP</span></div></div><div class="overflow-y-auto flex-1 px-space-sm py-space-md"><div class="mb-space-lg"><div class="px-space-sm mb-space-xs font-caption text-caption text-primary-fixed-dim uppercase tracking-wider font-semibold">MAIN</div><nav class="flex flex-col gap-1" data-active-classes="bg-secondary text-on-secondary font-medium rounded-lg"><a aria-current="page" class="flex items-center gap-3 px-space-sm py-2 transition-colors bg-secondary text-on-secondary font-medium rounded-lg" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="users-accounts" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Users & Accounts</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="domains-dns" href="#"><span class="material-symbols-outlined text-[20px]">dns</span><span>Domains & DNS</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="packages-plans" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Packages & Plans</span></a></nav></div><div class="mb-space-lg"><div class="px-space-sm mb-space-xs font-caption text-caption text-primary-fixed-dim uppercase tracking-wider font-semibold">OPERATIONS</div><nav class="flex flex-col gap-1" data-active-classes="bg-secondary text-on-secondary font-medium rounded-lg"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="upgrade-requests" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">upgrade</span><span>Upgrade Requests</span></div><span class="bg-secondary-container text-on-secondary-container font-caption text-caption px-1.5 py-0.5 rounded-full font-bold">3</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="mail-server" href="#"><span class="material-symbols-outlined text-[20px]">mark_email_read</span><span>Mail Server</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="activity-logs" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>Activity Logs</span></a></nav></div><div class="mb-space-md"><div class="px-space-sm mb-space-xs font-caption text-caption text-primary-fixed-dim uppercase tracking-wider font-semibold">SYSTEM</div><nav class="flex flex-col gap-1" data-active-classes="bg-secondary text-on-secondary font-medium rounded-lg"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="server-settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span>Server Settings</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="backup-storage" href="#"><span class="material-symbols-outlined text-[20px]">settings_backup_restore</span><span>Backup & Storage</span></a></nav></div></div></div><div class="p-space-sm border-t border-primary-container bg-primary shrink-0 flex flex-col gap-2"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg bg-primary-container hover:bg-surface-tint text-on-primary transition-colors font-label-sm text-label-sm" href="#"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">switch_account</span>Switch to User View</span><span class="material-symbols-outlined text-[16px]">north_east</span></a><div class="bg-primary-container/60 rounded-lg p-space-sm flex flex-col gap-1.5 border border-primary-container"><div class="flex items-center justify-between font-caption text-caption text-primary-fixed-dim"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-pulse"></span>Server Health</span><span class="text-tertiary-fixed font-semibold">Optimal</span></div><div class="grid grid-cols-3 gap-1 pt-1 border-t border-primary-container font-caption text-caption text-center"><div class="flex flex-col"><span class="text-primary-fixed-dim">CPU</span><span class="font-code-sm text-code-sm text-on-primary font-semibold">24%</span></div><div class="flex flex-col"><span class="text-primary-fixed-dim">RAM</span><span class="font-code-sm text-code-sm text-on-primary font-semibold">58%</span></div><div class="flex flex-col"><span class="text-primary-fixed-dim">Uptime</span><span class="font-code-sm text-code-sm text-tertiary-fixed font-semibold">99.98%</span></div></div></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span><input class="w-full pl-10 pr-16 py-2 bg-surface-container-low border border-outline-variant/40 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="Search domains, users, IP addresses..." type="text"/><kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 bg-surface-container-highest px-1.5 py-0.5 rounded font-caption text-caption text-on-surface-variant font-medium border border-outline-variant/40">⌘K</kbd></div><div class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low border border-outline-variant/30 rounded-lg font-caption text-caption text-on-surface-variant shrink-0"><span class="material-symbols-outlined text-[16px] text-secondary">dns</span><span class="font-medium text-on-surface">US-East-1</span><span class="text-outline">(Primary Cluster)</span></div></div><div class="flex items-center gap-space-md shrink-0"><button class="flex items-center gap-1.5 px-space-md py-2 bg-secondary text-on-secondary hover:bg-secondary/90 font-label-md text-label-md rounded-lg shadow-sm transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Quick Action</span></button><button class="relative p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="h-6 w-px bg-outline-variant/30"></div><div class="flex items-center gap-3 pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe-tzSBGnmTPffnXXUwGd8B125C-JTuVL4Vvw9yM35KNJsgF-KnoUxRtCacDGlRE2sM3XV07OswgoPLKuerz4xYAwBvzG78nADnQbNH24kmdU53cOCKILo3hf-L3191ujFn91UqIkhVnQTk7rwGSPGqAFbvkHGA84xenLLDQijh4m6BEjbkA-3MRhuAeBm7bAyinv8LZAm4YAOBo411xTzgjZqAGw5UCs3hS-Dh_p_D7OxR0L5nr5n"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Marcus Vance</span><span class="font-caption text-caption text-on-surface-variant">Super Admin</span></div><span class="material-symbols-outlined text-[18px] text-on-surface-variant">expand_more</span></div></div></header><main class="w-full pt-16 px-space-lg py-space-xl bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Dashboard Top Action Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md mb-space-lg">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-caption text-caption text-secondary font-bold uppercase tracking-wider">Cluster Telemetry & Control</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Node ID: us-east-01a</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">System Dashboard</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Overview of cluster health, active accounts, infrastructure load, and revenue telemetry.</p>
+</div>
+<!-- Actions Tray -->
+<div class="flex items-center flex-wrap gap-2.5">
+<div class="relative inline-block text-left">
+<button class="flex items-center gap-2 bg-surface-container-lowest px-3 py-2 rounded-lg shadow-sm text-on-surface hover:bg-surface-container-low transition-colors" id="range-btn">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">calendar_today</span>
+<span class="font-label-md text-label-md">Last 30 Days</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</button>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-lowest text-on-surface hover:bg-surface-container-low px-3.5 py-2 rounded-lg shadow-sm transition-all font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">download</span>
+<span>Generate Report</span>
+</button>
+<button class="flex items-center gap-2 bg-secondary text-on-secondary hover:bg-secondary/90 px-4 py-2 rounded-lg shadow-sm transition-all font-label-md text-label-md font-medium" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ New Account</span>
+</button>
+</div>
+</div>
+<!-- KPI Metrics 4-Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter mb-space-lg">
+<!-- Card 1: Total Users -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-caption text-caption uppercase text-on-surface-variant tracking-wider font-semibold">Total Users</span>
+<span class="inline-flex items-center gap-1 font-caption text-caption px-2 py-0.5 rounded-full bg-surface-container text-secondary font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+            +12.4%
+          </span>
+</div>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">1,482</span>
+<span class="font-caption text-caption text-on-surface-variant">registered users</span>
+</div>
+</div>
+<!-- Distribution Bar & Meta -->
+<div class="pt-2">
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden flex mb-2">
+<div class="bg-secondary h-full" style="width: 91%"></div>
+<div class="bg-error h-full" style="width: 6%"></div>
+<div class="bg-surface-dim h-full" style="width: 3%"></div>
+</div>
+<div class="flex items-center justify-between font-caption text-caption text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>1,350 Active</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-error"></span>84 Suspended</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-surface-dim"></span>48 Pending</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Hosted Domains -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-caption text-caption uppercase text-on-surface-variant tracking-wider font-semibold">Hosted Domains</span>
+<span class="inline-flex items-center gap-1 font-caption text-caption px-2 py-0.5 rounded-full bg-surface-container text-secondary font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+            +8.1%
+          </span>
+</div>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">3,840</span>
+<span class="font-caption text-caption text-on-surface-variant">live zones</span>
+</div>
+</div>
+<div class="pt-2">
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden flex mb-2">
+<div class="bg-secondary-container h-full" style="width: 96.6%"></div>
+<div class="bg-surface-dim h-full" style="width: 3.4%"></div>
+</div>
+<div class="flex items-center justify-between font-caption text-caption text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>3,712 Resolved DNS</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-surface-dim"></span>128 Unverified</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Active Mailboxes -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-caption text-caption uppercase text-on-surface-variant tracking-wider font-semibold">Active Mailboxes</span>
+<span class="inline-flex items-center gap-1 font-caption text-caption px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-semibold">
+<span class="material-symbols-outlined text-[14px] text-tertiary-container">check_circle</span>
+            99.94% Sndr
+          </span>
+</div>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">18,924</span>
+<span class="font-caption text-caption text-on-surface-variant">inboxes</span>
+</div>
+</div>
+<div class="pt-2">
+<div class="flex items-center justify-between font-caption text-caption text-on-surface-variant mb-1.5">
+<span>Spam Rate: <strong class="text-on-surface font-medium">0.02%</strong></span>
+<span>Disk Used: <strong class="text-on-surface font-medium">4.2 TB</strong></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 58%"></div>
+</div>
+</div>
+</div>
+<!-- Card 4: Monthly Recurring Revenue -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-caption text-caption uppercase text-on-surface-variant tracking-wider font-semibold">Monthly Revenue</span>
+<span class="inline-flex items-center gap-1 font-caption text-caption px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+            +15.3%
+          </span>
+</div>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">$42,850</span>
+<span class="font-caption text-caption text-on-surface-variant">MRR Run-rate</span>
+</div>
+</div>
+<div class="pt-2 flex items-center justify-between font-caption text-caption text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">verified</span>
+<strong class="text-on-surface font-semibold">384</strong> New Tier Upgrades
+        </span>
+<span class="text-secondary font-semibold">On Target</span>
+</div>
+</div>
+</div>
+<!-- Secondary Row: Infrastructure Health & Package Breakdown -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-space-lg">
+<!-- Server Resource Load (8 Cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-sm mb-space-md gap-2">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">memory</span>
+</div>
+<div>
+<h2 class="font-title-sm text-title-sm font-semibold text-on-surface">Primary Cluster Resource Telemetry</h2>
+<p class="font-caption text-caption text-on-surface-variant">Dell PowerEdge R750xs • 128 vCPU • 512GB ECC • NVMe Tier-1</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-caption text-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            All Systems Operational
+          </span>
+</div>
+</div>
+<!-- 3 Metrics Columns -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md mb-space-md">
+<!-- Metric 1: CPU -->
+<div class="bg-surface-container-low p-space-md rounded-xl">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Web Server Load</span>
+<span class="font-code-sm text-code-sm font-bold text-on-surface">28%</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant block mb-3">Nginx reverse-proxy & PHP 8.3-FPM</span>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 28%"></div>
+</div>
+<div class="flex justify-between font-caption text-caption text-on-surface-variant mt-2">
+<span>Avg 1.14 load</span>
+<span>64 Workers</span>
+</div>
+</div>
+<!-- Metric 2: RAM -->
+<div class="bg-surface-container-low p-space-md rounded-xl">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">MariaDB Engine</span>
+<span class="font-code-sm text-code-sm font-bold text-on-surface">64%</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant block mb-3">InnoDB Buffer Pool 328GB / 512GB</span>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 64%"></div>
+</div>
+<div class="flex justify-between font-caption text-caption text-on-surface-variant mt-2">
+<span>Hit ratio 99.2%</span>
+<span>1,410 qps</span>
+</div>
+</div>
+<!-- Metric 3: NVMe Storage -->
+<div class="bg-surface-container-low p-space-md rounded-xl">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">NVMe Cluster Storage</span>
+<span class="font-code-sm text-code-sm font-bold text-on-surface">40%</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant block mb-3">ZFS RAID-Z2 Array (4.8TB / 12TB)</span>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 40%"></div>
+</div>
+<div class="flex justify-between font-caption text-caption text-on-surface-variant mt-2">
+<span>7.2 TB free</span>
+<span>Read IOPS 142k</span>
+</div>
+</div>
+</div>
+<!-- Quick Telemetry Footnote -->
+<div class="flex flex-wrap items-center justify-between pt-space-xs text-on-surface-variant font-caption text-caption">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-secondary">sync</span> Sync delay: 18ms</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-on-surface-variant">shield</span> DDoS Guard: Active</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-on-surface-variant">lan</span> Bandwidth: 1.48 Gbps</span>
+</div>
+<span class="text-on-surface font-medium">Kernel: 6.8.0-45-cloud-amd64</span>
+</div>
+</div>
+<!-- Package Distribution (4 Cols) -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<h2 class="font-title-sm text-title-sm font-semibold text-on-surface">Tier Distribution</h2>
+<span class="font-caption text-caption text-on-surface-variant font-mono">1,482 ACCTS</span>
+</div>
+<!-- Stacked Representation -->
+<div class="mb-space-md">
+<div class="flex h-3 w-full rounded-full overflow-hidden mb-space-sm">
+<div class="bg-surface-dim hover:opacity-90 transition-opacity" style="width: 45%" title="Cloud Starter 45%"></div>
+<div class="bg-secondary-container hover:opacity-90 transition-opacity" style="width: 38%" title="Cloud Business 38%"></div>
+<div class="bg-primary hover:opacity-90 transition-opacity" style="width: 17%" title="Cloud Enterprise 17%"></div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Revenue distribution skewed 68% towards Enterprise and Business.</p>
+</div>
+<!-- List breakdown -->
+<div class="space-y-3">
+<!-- Starter -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-surface-dim shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface leading-none">Cloud Starter</span>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5">667 accounts • $12/mo</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-on-surface block">$8,004</span>
+<span class="font-caption text-caption text-on-surface-variant">45% total</span>
+</div>
+</div>
+<!-- Business -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-secondary-container shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface leading-none">Cloud Business</span>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5">563 accounts • $34/mo</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-on-surface block">$19,142</span>
+<span class="font-caption text-caption text-on-surface-variant">38% total</span>
+</div>
+</div>
+<!-- Enterprise -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-primary shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface leading-none">Cloud Enterprise</span>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5">252 accounts • $62/mo</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-on-surface block">$15,704</span>
+<span class="font-caption text-caption text-on-surface-variant">17% total</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-sm mt-space-sm flex items-center justify-between text-on-surface-variant font-caption text-caption">
+<span>Average ARPU: <strong class="text-on-surface font-semibold">$28.91</strong></span>
+<a class="text-secondary hover:underline font-semibold flex items-center gap-1" href="#">Configure Plans <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Two-Column Operational Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Pending Actions & Admin Controls (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Pending Upgrade Approvals -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">upgrade</span>
+</div>
+<div>
+<h2 class="font-title-sm text-title-sm font-semibold text-on-surface">Pending Package Upgrades</h2>
+<span class="font-caption text-caption text-on-surface-variant">3 accounts queued for quota and container recalculation</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption font-bold">3 Pending</span>
+</div>
+<!-- Upgrade Requests List -->
+<div class="space-y-3">
+<!-- Request 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-lg object-cover shadow-xs shrink-0" data-alt="Corporate minimalist logo icon for Apex Design Studio, bold geometric shapes on high contrast background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBurpNARctuz6lp1H4hW5Y9l2juzDYHyGpKjRBkay_bsLihslroazp3ZdrV-tVZ149Y3HZwvkdMrQpBCpDNFrSMokSyIo3Z7O0SLm94yijyfSbVqjRsE5nHAM29WGs_F9PUfXceHZo7ZnqoJn8vfuYjOdM4l-L27Pu3xgFCAbc0ZEYZeV30EXXtLJJzaeYptLrHHY5Z8NjYCoAIxKqXBJ4CMar_sgLTq2mPU7f7RDj2ysm77P3irXAS"/>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Apex Studio Ltd</span>
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-surface-container-highest text-on-surface-variant font-mono">#TK-8021</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-caption text-caption text-on-surface-variant">Starter → <strong class="text-secondary font-semibold">Business Tier</strong></span>
+<span class="text-on-surface-variant text-[10px]">•</span>
+<span class="font-caption text-caption text-on-surface-variant">+20 Mailboxes & 100GB</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface text-label-sm font-label-sm shadow-xs transition-colors" type="button">
+                Review
+              </button>
+<button class="px-3 py-1.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 text-label-sm font-label-sm shadow-xs transition-colors font-medium" type="button">
+                Approve
+              </button>
+</div>
+</div>
+<!-- Request 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-lg object-cover shadow-xs shrink-0" data-alt="Modern tech agency badge for NovaTech LLC, navy blue and cyan hues, clean vector graphic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR9bSuYjkqrupwiBbz7lEFdTD2IhC8CCUyQnIUBLRAvi3rxhHUaDXU4S6qo0gReKRFq4Q9JvN2tdsbUxWPfjR8o_CiBtFCD8gzahwTKunDSDSy9BLLT7gslMhmiy-uNjwroBMS4EJewrI-nvEMKwjn433aYvYTPu6ThMfaR8f66G6_iX2VAvQTBybQhog2RTIPtaWYAcNL9pZ4kGQyJZzqesD7X6R35gtAJ-_T_dAA0HMBox4Y2dIG"/>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface">NovaTech LLC</span>
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-surface-container-highest text-on-surface-variant font-mono">#TK-8019</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-caption text-caption text-on-surface-variant">Business → <strong class="text-primary font-semibold">Custom Dedicated</strong></span>
+<span class="text-on-surface-variant text-[10px]">•</span>
+<span class="font-caption text-caption text-on-surface-variant">Storage Boost to 2.5TB</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface text-label-sm font-label-sm shadow-xs transition-colors" type="button">
+                Review
+              </button>
+<button class="px-3 py-1.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 text-label-sm font-label-sm shadow-xs transition-colors font-medium" type="button">
+                Approve
+              </button>
+</div>
+</div>
+<!-- Request 3 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-lg object-cover shadow-xs shrink-0" data-alt="Clean corporate symbol for Quantum Logistics, deep navy badge with sharp graphic emblem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJwbv0LzQP5in09HtQhnNR-3LIDwgZm6VG3xZ3AjNAZnwkj57QlA2mXr1Eq2aVgdrvKCYtsz_-YO-gz_3DrTGJbLPWc5_vc12G9ysQNuvWx8ZRwWeIdcQc9jVo5BeE1L7Tjc7fsBkEgdkwBHBACQ9dzgQgTyHO3IKe_uA4IhSqpcoJY09o-7Yy0VYlRgkBh4Y8YcdJGuZFGK-dnzL9rirJ0Bo5TE0WExMB0D1WnDOtXHOKGl6iHfkA"/>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Quantum Logistics</span>
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-surface-container-highest text-on-surface-variant font-mono">#TK-7994</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-caption text-caption text-on-surface-variant">Starter → <strong class="text-secondary font-semibold">Pro Tier</strong></span>
+<span class="text-on-surface-variant text-[10px]">•</span>
+<span class="font-caption text-caption text-on-surface-variant">Dedicated IPv4 Addon</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface text-label-sm font-label-sm shadow-xs transition-colors" type="button">
+                Review
+              </button>
+<button class="px-3 py-1.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 text-label-sm font-label-sm shadow-xs transition-colors font-medium" type="button">
+                Approve
+              </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick System Actions Toolbar -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">terminal</span>
+<h2 class="font-title-sm text-title-sm font-semibold text-on-surface">Quick Operational Routines</h2>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Privilege: SuperAdmin</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-all text-center group" type="button">
+<span class="material-symbols-outlined text-[22px] text-on-surface-variant group-hover:text-secondary mb-1">restart_alt</span>
+<span class="font-label-sm text-label-sm font-semibold">Restart Web</span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">Nginx & PHP-FPM</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-all text-center group" type="button">
+<span class="material-symbols-outlined text-[22px] text-on-surface-variant group-hover:text-secondary mb-1">cleaning_services</span>
+<span class="font-label-sm text-label-sm font-semibold">Flush DNS</span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">Bind9 Resolver</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-all text-center group" type="button">
+<span class="material-symbols-outlined text-[22px] text-on-surface-variant group-hover:text-secondary mb-1">reorder</span>
+<span class="font-label-sm text-label-sm font-semibold">Rebuild Queue</span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">Postfix Spool</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-all text-center group" type="button">
+<span class="material-symbols-outlined text-[22px] text-on-surface-variant group-hover:text-secondary mb-1">save</span>
+<span class="font-label-sm text-label-sm font-semibold">Snapshot Now</span>
+<span class="font-caption text-caption text-on-surface-variant text-[11px]">NVMe Differential</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Live Audit Event Stream (5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">history</span>
+<h2 class="font-title-sm text-title-sm font-semibold text-on-surface">Live Audit Stream</h2>
+</div>
+<span class="flex items-center gap-1 font-caption text-caption text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Streaming
+          </span>
+</div>
+<!-- Activity Feed List -->
+<div class="space-y-3.5">
+<!-- Item 1: SSL Renewed -->
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface truncate">apexdesign.io</span>
+<span class="font-caption text-caption text-on-surface-variant whitespace-nowrap">4m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Let's Encrypt wildcard SSL auto-renewed successfully for 90 days.</p>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-surface-container text-secondary font-medium">SSL / Cert</span>
+<span class="font-caption text-caption text-on-surface-variant font-mono">TLS 1.3</span>
+</div>
+</div>
+</div>
+<!-- Item 2: User Upgraded -->
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">stars</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface truncate">sarah.connor@cyber.net</span>
+<span class="font-caption text-caption text-on-surface-variant whitespace-nowrap">18m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Plan modified: Upgraded from Starter to Enterprise Pro Tier.</p>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-surface-container text-primary font-medium">Billing Event</span>
+<span class="font-caption text-caption text-on-surface-variant font-mono">Stripe_sub_91A</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Mailbox Warning -->
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-error shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">warning</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface truncate">dev@novasoft.com</span>
+<span class="font-caption text-caption text-on-surface-variant whitespace-nowrap">32m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Quota notice: Mailbox reached 98% (24.5 GB of 25.0 GB limit).</p>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-surface-container text-error font-medium">Quota Warning</span>
+<span class="font-caption text-caption text-on-surface-variant">Autoclean disabled</span>
+</div>
+</div>
+</div>
+<!-- Item 4: Security SSH Block -->
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-error-container flex items-center justify-center text-on-error-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">gpp_bad</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface truncate">Fail2ban: SSH Jail</span>
+<span class="font-caption text-caption text-on-surface-variant whitespace-nowrap">1h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">IP <code class="font-code-sm text-code-sm font-mono text-on-surface">185.220.101.5</code> banned for 72h following 5 failed root attempts.</p>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-surface-container text-on-surface font-medium">Security Alert</span>
+<span class="font-caption text-caption text-on-surface-variant font-mono">Port 2222</span>
+</div>
+</div>
+</div>
+<!-- Item 5: Automated Backup Snapshot -->
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-on-surface shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">inventory</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface truncate">NVMe Daily Snapshot</span>
+<span class="font-caption text-caption text-on-surface-variant whitespace-nowrap">3h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">4.8 TB incremental snapshot encrypted & pushed to Cold Offsite Vault.</p>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-surface-container text-on-surface font-medium">Backup Routine</span>
+<span class="font-caption text-caption text-on-surface-variant font-mono">SHA-256 Verified</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-md mt-space-md flex items-center justify-between">
+<a class="font-label-sm text-label-sm text-secondary hover:underline font-semibold flex items-center gap-1" href="#">
+          Open Full System Audit Log
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<span class="font-caption text-caption text-on-surface-variant font-mono">v4.12.0-STABLE</span>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

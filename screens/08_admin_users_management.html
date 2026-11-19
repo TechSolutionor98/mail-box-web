@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-dim":"#cbdbf5","secondary-container":"#316bf3","on-primary-fixed":"#001a41","on-secondary-container":"#fefcff","on-surface":"#0b1c30","on-tertiary-fixed":"#002114","secondary-fixed":"#dbe1ff","surface-container-highest":"#d3e4fe","tertiary-fixed":"#85f8c4","inverse-surface":"#213145","tertiary-fixed-dim":"#68dba9","surface-tint":"#475e8c","on-primary-fixed-variant":"#2e4673","on-primary":"#ffffff","on-secondary-fixed-variant":"#003ea8","on-background":"#0b1c30","surface-variant":"#d3e4fe","on-secondary-fixed":"#00174b","surface-container-low":"#eff4ff","outline-variant":"#c4c6d0","primary-fixed-dim":"#afc6fb","surface-container-high":"#dce9ff","inverse-primary":"#afc6fb","on-error":"#ffffff","primary-fixed":"#d8e2ff","secondary-fixed-dim":"#b4c5ff","tertiary-container":"#00422c","on-tertiary-container":"#3fb687","surface":"#f8f9ff","on-secondary":"#ffffff","tertiary":"#002a1a","secondary":"#0051d5","on-primary-container":"#8ba2d5","outline":"#747780","on-surface-variant":"#44474f","error":"#ba1a1a","surface-container-lowest":"#ffffff","on-error-container":"#93000a","error-container":"#ffdad6","on-tertiary-fixed-variant":"#005137","background":"#f8f9ff","surface-bright":"#f8f9ff","on-tertiary":"#ffffff","primary":"#03224d","primary-container":"#1f3864","inverse-on-surface":"#eaf1ff","surface-container":"#e5eeff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-lg":"1.5rem","margin":"2rem","space-xl":"2rem","space-xs":"0.25rem","space-sm":"0.5rem","margin-sm":"1rem","gutter":"1.5rem","gutter-sm":"1rem","space-md":"1rem"},"fontFamily":{"headline-md":["Inter"],"body-sm":["Inter"],"code-sm":["Inter"],"title-sm":["Inter"],"display-lg":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"],"body-md":["Inter"],"label-md":["Inter"],"caption":["Inter"],"headline-lg-mobile":["Inter"],"body-lg":["Inter"]},"fontSize":{"headline-md":["18px",{"lineHeight":"26px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"title-sm":["15px",{"lineHeight":"22px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.025em","fontWeight":"700"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"caption":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-lg":["15px",{"lineHeight":"24px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-primary text-on-primary-fixed z-50 flex flex-col justify-between border-r border-primary-container shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col min-h-0 flex-1"><div class="h-16 flex items-center gap-3 px-space-lg border-b border-primary-container shrink-0"><img alt="CloudHost Admin Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WPEGQ2IS0KUQSCx6F9GUVebvttaF8ZJlueAY1GgCKo9eH2N7pDSw5EJqXDNl4vfIo6XxwwE1-xs0JxHpy7h0EqjY69qpzlNJkM_KoWxFYctzFNYKSaDT6uJtNa49Jr6UFtuUubMnrMueMNKP3PnuZ7V6lexQE0hIBktD19KeXH6xCbadcjNNhr-ImFBrREA9qKOICo830om6BPwbMOnMpZXTVjaE0EV2Z8WZhtBsEJLkinF60woRtjyiI"/><div class="flex flex-col"><span class="font-title-sm text-title-sm text-on-primary tracking-tight font-semibold">CloudHost</span><span class="font-caption text-caption text-primary-fixed-dim uppercase tracking-wider">Enterprise CP</span></div></div><div class="overflow-y-auto flex-1 px-space-sm py-space-md"><div class="mb-space-lg"><div class="px-space-sm mb-space-xs font-caption text-caption text-primary-fixed-dim uppercase tracking-wider font-semibold">MAIN</div><nav class="flex flex-col gap-1" data-active-classes="bg-secondary text-on-secondary font-medium rounded-lg"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a><a aria-current="page" class="flex items-center gap-3 px-space-sm py-2 transition-colors bg-secondary text-on-secondary font-medium rounded-lg" data-path="users-accounts" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Users & Accounts</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="domains-dns" href="#"><span class="material-symbols-outlined text-[20px]">dns</span><span>Domains & DNS</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="packages-plans" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Packages & Plans</span></a></nav></div><div class="mb-space-lg"><div class="px-space-sm mb-space-xs font-caption text-caption text-primary-fixed-dim uppercase tracking-wider font-semibold">OPERATIONS</div><nav class="flex flex-col gap-1" data-active-classes="bg-secondary text-on-secondary font-medium rounded-lg"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="upgrade-requests" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">upgrade</span><span>Upgrade Requests</span></div><span class="bg-secondary-container text-on-secondary-container font-caption text-caption px-1.5 py-0.5 rounded-full font-bold">3</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="mail-server" href="#"><span class="material-symbols-outlined text-[20px]">mark_email_read</span><span>Mail Server</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="activity-logs" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>Activity Logs</span></a></nav></div><div class="mb-space-md"><div class="px-space-sm mb-space-xs font-caption text-caption text-primary-fixed-dim uppercase tracking-wider font-semibold">SYSTEM</div><nav class="flex flex-col gap-1" data-active-classes="bg-secondary text-on-secondary font-medium rounded-lg"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="server-settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span>Server Settings</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg font-label-md text-label-md text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary transition-colors" data-path="backup-storage" href="#"><span class="material-symbols-outlined text-[20px]">settings_backup_restore</span><span>Backup & Storage</span></a></nav></div></div></div><div class="p-space-sm border-t border-primary-container bg-primary shrink-0 flex flex-col gap-2"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg bg-primary-container hover:bg-surface-tint text-on-primary transition-colors font-label-sm text-label-sm" href="#"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">switch_account</span>Switch to User View</span><span class="material-symbols-outlined text-[16px]">north_east</span></a><div class="bg-primary-container/60 rounded-lg p-space-sm flex flex-col gap-1.5 border border-primary-container"><div class="flex items-center justify-between font-caption text-caption text-primary-fixed-dim"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-pulse"></span>Server Health</span><span class="text-tertiary-fixed font-semibold">Optimal</span></div><div class="grid grid-cols-3 gap-1 pt-1 border-t border-primary-container font-caption text-caption text-center"><div class="flex flex-col"><span class="text-primary-fixed-dim">CPU</span><span class="font-code-sm text-code-sm text-on-primary font-semibold">24%</span></div><div class="flex flex-col"><span class="text-primary-fixed-dim">RAM</span><span class="font-code-sm text-code-sm text-on-primary font-semibold">58%</span></div><div class="flex flex-col"><span class="text-primary-fixed-dim">Uptime</span><span class="font-code-sm text-code-sm text-tertiary-fixed font-semibold">99.98%</span></div></div></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span><input class="w-full pl-10 pr-16 py-2 bg-surface-container-low border border-outline-variant/40 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="Search domains, users, IP addresses..." type="text"/><kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 bg-surface-container-highest px-1.5 py-0.5 rounded font-caption text-caption text-on-surface-variant font-medium border border-outline-variant/40">⌘K</kbd></div><div class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low border border-outline-variant/30 rounded-lg font-caption text-caption text-on-surface-variant shrink-0"><span class="material-symbols-outlined text-[16px] text-secondary">dns</span><span class="font-medium text-on-surface">US-East-1</span><span class="text-outline">(Primary Cluster)</span></div></div><div class="flex items-center gap-space-md shrink-0"><button class="flex items-center gap-1.5 px-space-md py-2 bg-secondary text-on-secondary hover:bg-secondary/90 font-label-md text-label-md rounded-lg shadow-sm transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Quick Action</span></button><button class="relative p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="h-6 w-px bg-outline-variant/30"></div><div class="flex items-center gap-3 pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe-tzSBGnmTPffnXXUwGd8B125C-JTuVL4Vvw9yM35KNJsgF-KnoUxRtCacDGlRE2sM3XV07OswgoPLKuerz4xYAwBvzG78nADnQbNH24kmdU53cOCKILo3hf-L3191ujFn91UqIkhVnQTk7rwGSPGqAFbvkHGA84xenLLDQijh4m6BEjbkA-3MRhuAeBm7bAyinv8LZAm4YAOBo411xTzgjZqAGw5UCs3hS-Dh_p_D7OxR0L5nr5n"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Marcus Vance</span><span class="font-caption text-caption text-on-surface-variant">Super Admin</span></div><span class="material-symbols-outlined text-[18px] text-on-surface-variant">expand_more</span></div></div></header><main class="w-full pt-16 px-space-lg py-space-xl bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full gap-space-lg">
+<!-- Breadcrumb & Top Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<nav class="flex items-center gap-2 font-caption text-caption text-outline">
+<a class="hover:text-secondary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-secondary transition-colors" href="#">Access & Users</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Users Directory</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Users & Account Directory</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-2xl">
+        Manage customer accounts, assigned packages, storage quotas, and security access states across all production clusters.
+      </p>
+</div>
+<!-- Top Action Buttons -->
+<div class="flex items-center gap-3 self-start md:self-auto shrink-0">
+<button class="flex items-center gap-2 px-space-md py-2.5 bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md rounded-lg shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Export CSV</span>
+</button>
+<button class="flex items-center gap-2 px-space-lg py-2.5 bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded-lg shadow-md transition-all transform active:scale-95" id="open-drawer-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>Create New User</span>
+</button>
+</div>
+</div>
+<!-- Operational Telemetry / KPI Summary Pills -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-outline uppercase tracking-wider">Total Accounts</span>
+<span class="font-headline-lg text-headline-lg text-primary mt-1">1,482</span>
+<span class="font-caption text-caption text-secondary mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">trending_up</span>+14 this week
+        </span>
+</div>
+<div class="w-11 h-11 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">group</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-outline uppercase tracking-wider">Active State</span>
+<span class="font-headline-lg text-headline-lg text-on-surface mt-1">1,350</span>
+<span class="font-caption text-caption text-on-tertiary-container mt-0.5 font-medium">91.1% Operational</span>
+</div>
+<div class="w-11 h-11 rounded-lg bg-tertiary-fixed/30 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-outline uppercase tracking-wider">Suspended</span>
+<span class="font-headline-lg text-headline-lg text-error mt-1">84</span>
+<span class="font-caption text-caption text-error mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">warning</span>6 over-quota lock
+        </span>
+</div>
+<div class="w-11 h-11 rounded-lg bg-error-container/50 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-outline uppercase tracking-wider">Pending Verification</span>
+<span class="font-headline-lg text-headline-lg text-secondary-container mt-1">48</span>
+<span class="font-caption text-caption text-outline mt-0.5">Awaiting email auth</span>
+</div>
+<div class="w-11 h-11 rounded-lg bg-secondary-fixed/50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[24px]">hourglass_top</span>
+</div>
+</div>
+</div>
+<!-- Primary Workstation Canvas -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col">
+<!-- Filter and Bulk Operation Action Bar -->
+<div class="p-space-md bg-surface-container-lowest flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">manage_search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-sm transition-all" id="user-filter-input" placeholder="Filter by name, email, or IP address..." type="text"/>
+</div>
+<!-- Filters & Dynamic Bulk Tools -->
+<div class="flex items-center flex-wrap gap-2.5">
+<div class="hidden items-center gap-2 mr-2 bg-surface-container-high px-3 py-1.5 rounded-lg animate-pulse" id="bulk-actions">
+<span class="font-caption text-caption font-semibold text-primary"><span id="selected-count">0</span> Selected</span>
+<button class="px-2 py-1 bg-surface-container-lowest text-error hover:bg-error hover:text-on-error rounded font-caption text-caption font-semibold transition-colors" type="button">Bulk Suspend</button>
+<button class="px-2 py-1 bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary rounded font-caption text-caption font-semibold transition-colors" type="button">Email Users</button>
+</div>
+<!-- Filter Dropdowns -->
+<div class="flex items-center gap-2">
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-2 bg-surface-container-low text-on-surface font-label-sm text-label-sm rounded-lg hover:bg-surface-container cursor-pointer focus:outline-none focus:shadow-sm transition-colors">
+<option>Status: All</option>
+<option>Status: Active</option>
+<option>Status: Suspended</option>
+<option>Status: Pending</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[16px]">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-2 bg-surface-container-low text-on-surface font-label-sm text-label-sm rounded-lg hover:bg-surface-container cursor-pointer focus:outline-none focus:shadow-sm transition-colors">
+<option>Package: All</option>
+<option>Starter Plan</option>
+<option>Cloud Business</option>
+<option>Cloud Pro</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[16px]">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-2 bg-surface-container-low text-on-surface font-label-sm text-label-sm rounded-lg hover:bg-surface-container cursor-pointer focus:outline-none focus:shadow-sm transition-colors">
+<option>Sort: Newest Joined</option>
+<option>Sort: Highest Storage</option>
+<option>Sort: Alphabetical (A-Z)</option>
+<option>Sort: Last Login</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[16px]">sort</span>
+</div>
+<button class="p-2 bg-surface-container-low hover:bg-surface-container text-on-surface-variant rounded-lg transition-colors" title="Refresh Table" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-outline font-caption text-caption uppercase tracking-wider h-10">
+<th class="pl-space-md pr-2 w-10">
+<input class="w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer bg-surface-container" id="select-all" type="checkbox"/>
+</th>
+<th class="py-2 px-space-md font-semibold">User & Host Identity</th>
+<th class="py-2 px-space-md font-semibold">State</th>
+<th class="py-2 px-space-md font-semibold">Hosting Tier</th>
+<th class="py-2 px-space-md font-semibold">Allocations</th>
+<th class="py-2 px-space-md font-semibold min-w-[180px]">Storage Quota</th>
+<th class="py-2 px-space-md font-semibold">Joined / Activity</th>
+<th class="py-2 pr-space-md pl-space-md text-right font-semibold">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm text-on-surface">
+<!-- Row 1: Alexander Wright -->
+<tr class="hover:bg-surface-container-lowest/60 hover:bg-surface transition-colors group">
+<td class="pl-space-md pr-2 py-3.5">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer bg-surface-container-low" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-title-sm text-title-sm font-semibold shrink-0 shadow-sm">
+                  AW
+                </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-primary truncate">Alexander Wright</span>
+<span class="material-symbols-outlined text-[14px] text-secondary" title="Verified Root Domain Owner">verified</span>
+</div>
+<span class="text-on-surface-variant font-code-sm text-code-sm truncate">alex@hyperlink.dev</span>
+<span class="font-caption text-caption text-outline">IP: 198.51.100.42</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/10 text-on-tertiary-container font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+                Active
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-primary-container text-on-primary font-caption text-caption font-semibold">
+                Cloud Pro
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">8 Domains</span>
+<span class="font-caption text-caption text-on-surface-variant">24 Mailboxes active</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1 w-full max-w-[160px]">
+<div class="flex justify-between font-caption text-caption">
+<span class="text-on-surface font-medium">48.5 GB</span>
+<span class="text-outline">/ 100 GB</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 48.5%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Jun 12, 2023</span>
+<span class="font-caption text-caption text-on-surface-variant">2 hrs ago</span>
+</div>
+</td>
+<td class="py-3.5 pr-space-md pl-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg transition-colors" title="Impersonate User" type="button">
+<span class="material-symbols-outlined text-[18px]">switch_account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors" title="Manage Config" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Elena Rostova -->
+<tr class="hover:bg-surface-container-lowest/60 hover:bg-surface transition-colors group">
+<td class="pl-space-md pr-2 py-3.5">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer bg-surface-container-low" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-primary flex items-center justify-center font-title-sm text-title-sm font-semibold shrink-0 shadow-sm">
+                  ER
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-primary truncate">Elena Rostova</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm truncate">elena@vividstudios.co</span>
+<span class="font-caption text-caption text-outline">IP: 203.0.113.19</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/10 text-on-tertiary-container font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Active
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-highest text-primary font-caption text-caption font-semibold">
+                Cloud Business
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">3 Domains</span>
+<span class="font-caption text-caption text-on-surface-variant">10 Mailboxes</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1 w-full max-w-[160px]">
+<div class="flex justify-between font-caption text-caption">
+<span class="text-on-surface font-medium">18.2 GB</span>
+<span class="text-outline">/ 50 GB</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 36.4%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Sep 04, 2023</span>
+<span class="font-caption text-caption text-on-surface-variant">Yesterday, 18:20</span>
+</div>
+</td>
+<td class="py-3.5 pr-space-md pl-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg transition-colors" title="Impersonate User" type="button">
+<span class="material-symbols-outlined text-[18px]">switch_account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors" title="Manage Config" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Marcus Sterling (Suspended) -->
+<tr class="bg-error-container/5 hover:bg-error-container/10 transition-colors group">
+<td class="pl-space-md pr-2 py-3.5">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer bg-surface-container-low" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-error-container text-error flex items-center justify-center font-title-sm text-title-sm font-semibold shrink-0 shadow-sm">
+                  MS
+                </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-primary truncate">Marcus Sterling</span>
+<span class="material-symbols-outlined text-[14px] text-error" title="Account Flagged">lock</span>
+</div>
+<span class="text-on-surface-variant font-code-sm text-code-sm truncate">m.sterling@apexlogistics.com</span>
+<span class="font-caption text-caption text-outline">IP: 192.0.2.88</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-error font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Suspended
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-highest text-primary font-caption text-caption font-semibold">
+                Cloud Business
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">2 Domains</span>
+<span class="font-caption text-caption text-on-surface-variant">6 Mailboxes</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1 w-full max-w-[160px]">
+<div class="flex justify-between font-caption text-caption text-error font-semibold">
+<span>49.8 GB</span>
+<span>/ 50 GB (99%)</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 99.6%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Feb 18, 2023</span>
+<span class="font-caption text-caption text-error">Suspended 3d ago</span>
+</div>
+</td>
+<td class="py-3.5 pr-space-md pl-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="px-2 py-1 bg-surface-container-lowest text-secondary text-caption font-semibold rounded hover:bg-surface-container transition-colors" title="Reactivate Account" type="button">
+                  Reactivate
+                </button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors" title="Manage Config" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Priya Patel -->
+<tr class="hover:bg-surface-container-lowest/60 hover:bg-surface transition-colors group">
+<td class="pl-space-md pr-2 py-3.5">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer bg-surface-container-low" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed flex items-center justify-center font-title-sm text-title-sm font-semibold shrink-0 shadow-sm">
+                  PP
+                </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-primary truncate">Priya Patel</span>
+<span class="material-symbols-outlined text-[14px] text-secondary" title="Enterprise Tier User">star</span>
+</div>
+<span class="text-on-surface-variant font-code-sm text-code-sm truncate">priya@zenithai.tech</span>
+<span class="font-caption text-caption text-outline">IP: 198.51.100.112</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/10 text-on-tertiary-container font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Active
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-primary-container text-on-primary font-caption text-caption font-semibold">
+                Cloud Pro
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">12 Domains</span>
+<span class="font-caption text-caption text-on-surface-variant">40 Mailboxes</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1 w-full max-w-[160px]">
+<div class="flex justify-between font-caption text-caption">
+<span class="text-on-surface font-medium">78.0 GB</span>
+<span class="text-outline">/ 100 GB</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 78%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Nov 20, 2023</span>
+<span class="font-caption text-caption text-on-surface-variant">10 mins ago</span>
+</div>
+</td>
+<td class="py-3.5 pr-space-md pl-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg transition-colors" title="Impersonate User" type="button">
+<span class="material-symbols-outlined text-[18px]">switch_account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors" title="Manage Config" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: David Kim (Pending) -->
+<tr class="hover:bg-surface-container-lowest/60 hover:bg-surface transition-colors group">
+<td class="pl-space-md pr-2 py-3.5">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer bg-surface-container-low" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-title-sm text-title-sm font-semibold shrink-0 shadow-sm">
+                  DK
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-primary truncate">David Kim</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm truncate">david@seoulbites.kr</span>
+<span class="font-caption text-caption text-outline">IP: 203.0.113.4</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Pending Auth
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-caption text-caption font-semibold">
+                Cloud Starter
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">1 Domain</span>
+<span class="font-caption text-caption text-on-surface-variant">2 Mailboxes</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1 w-full max-w-[160px]">
+<div class="flex justify-between font-caption text-caption">
+<span class="text-on-surface font-medium">2.1 GB</span>
+<span class="text-outline">/ 10 GB</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 21%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Yesterday</span>
+<span class="font-caption text-caption text-outline">Never logged in</span>
+</div>
+</td>
+<td class="py-3.5 pr-space-md pl-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="px-2 py-1 bg-surface-container text-primary text-caption font-medium rounded hover:bg-surface-container-high transition-colors" title="Resend Activation" type="button">
+                  Resend Link
+                </button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors" title="Manage Config" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Sophia Ramirez -->
+<tr class="hover:bg-surface-container-lowest/60 hover:bg-surface transition-colors group">
+<td class="pl-space-md pr-2 py-3.5">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-0 cursor-pointer bg-surface-container-low" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-primary flex items-center justify-center font-title-sm text-title-sm font-semibold shrink-0 shadow-sm">
+                  SR
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-primary truncate">Sophia Ramirez</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm truncate">sophia@crestcapital.org</span>
+<span class="font-caption text-caption text-outline">IP: 198.51.100.95</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/10 text-on-tertiary-container font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Active
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-highest text-primary font-caption text-caption font-semibold">
+                Cloud Business
+              </span>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">4 Domains</span>
+<span class="font-caption text-caption text-on-surface-variant">15 Mailboxes</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1 w-full max-w-[160px]">
+<div class="flex justify-between font-caption text-caption">
+<span class="text-on-surface font-medium">31.4 GB</span>
+<span class="text-outline">/ 50 GB</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 62.8%;"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Aug 15, 2023</span>
+<span class="font-caption text-caption text-on-surface-variant">4 hrs ago</span>
+</div>
+</td>
+<td class="py-3.5 pr-space-md pl-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg transition-colors" title="Impersonate User" type="button">
+<span class="material-symbols-outlined text-[18px]">switch_account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors" title="Manage Config" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Range Status Bar -->
+<div class="p-space-md bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+        Showing <span class="font-semibold text-primary">1 - 6</span> of <span class="font-semibold text-primary">1,482</span> users
+      </div>
+<div class="flex items-center gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-outline font-label-sm text-label-sm cursor-not-allowed" disabled="" type="button">
+          Previous
+        </button>
+<button class="w-8 h-8 rounded-lg bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold flex items-center justify-center shadow-sm" type="button">
+          1
+        </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center justify-center transition-colors" type="button">
+          2
+        </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center justify-center transition-colors" type="button">
+          3
+        </button>
+<span class="px-1 text-outline">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center justify-center transition-colors" type="button">
+          149
+        </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+          Next
+        </button>
+</div>
+</div>
+</div>
+<!-- Operational Context Panel / Storage Cluster Status Banner -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="font-title-sm text-title-sm text-primary font-semibold">User Quota Consumption</span>
+<span class="material-symbols-outlined text-[20px] text-secondary">pie_chart</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+        Average client capacity usage is running at 64.2% across NVMe block storage pools.
+      </p>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container" style="width: 64.2%;"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary">64.2%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="font-title-sm text-title-sm text-primary font-semibold">Account Security Policy</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary-container">shield</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+        Two-Factor Authentication (2FA) is enforced for 94% of administrator and client accounts.
+      </p>
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-tertiary-container font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>Global MFA Enforced
+        </span>
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">Review Policies</a>
+</div>
+</div>
+<div class="bg-primary text-on-primary p-space-md rounded-xl shadow-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-title-sm text-title-sm font-semibold">Instant User Provisioning</span>
+<span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">bolt</span>
+</div>
+<p class="font-body-sm text-body-sm text-primary-fixed-dim">
+          Need automated user creation via external billing webhooks? Deploy REST or WHMCS endpoints in seconds.
+        </p>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-tertiary-fixed">API v2.4 Active</span>
+<button class="px-3 py-1 bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-on-primary rounded font-label-sm text-label-sm transition-colors" type="button">
+          View API Docs
+        </button>
+</div>
+</div>
+</div>
+<!-- Slide-Over Drawer: Create New User (Hidden by default, triggered via #open-drawer-btn) -->
+<div class="fixed inset-0 z-50 pointer-events-none transition-all duration-300" id="create-user-drawer">
+<!-- Backdrop Scrim -->
+<div class="absolute inset-0 bg-inverse-surface/40 backdrop-blur-sm opacity-0 transition-opacity duration-300" id="drawer-backdrop"></div>
+<!-- Drawer Panel Container -->
+<div class="absolute top-0 right-0 w-full max-w-lg h-full bg-surface-container-lowest shadow-xl translate-x-full transition-transform duration-300 ease-out flex flex-col pointer-events-auto" id="drawer-panel">
+<!-- Drawer Header -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="font-headline-md text-headline-md text-primary font-semibold">Create Customer Account</h2>
+<span class="font-caption text-caption text-on-surface-variant">Allocate server resources and provision credentials</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-lg transition-colors" id="close-drawer-btn" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Drawer Form Fields -->
+<div class="flex-1 overflow-y-auto p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Full Legal Name</label>
+<input class="w-full px-3.5 py-2.5 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:shadow-sm" placeholder="e.g. Rachel Sterling" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Email Address (Login ID)</label>
+<input class="w-full px-3.5 py-2.5 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:shadow-sm" placeholder="rachel@domain.com" type="email"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Assigned Plan</label>
+<select class="w-full px-3.5 py-2.5 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest">
+<option>Cloud Pro (100GB)</option>
+<option>Cloud Business (50GB)</option>
+<option>Starter Plan (10GB)</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Storage Override</label>
+<input class="w-full px-3.5 py-2.5 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest" placeholder="Default (Quota)" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Primary Registered Domain</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">globe</span>
+<input class="w-full pl-9 pr-4 py-2.5 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest" placeholder="example.com" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Master Account Password</label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest" type="password" value="SuperSecureSecret123!"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<span class="font-caption text-caption text-outline">Random secure password automatically generated.</span>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-start gap-3 mt-2">
+<input checked="" class="mt-0.5 w-4 h-4 rounded text-secondary" id="send-credentials" type="checkbox"/>
+<div class="flex flex-col">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold cursor-pointer" for="send-credentials">
+              Send welcome onboarding credentials
+            </label>
+<span class="font-caption text-caption text-on-surface-variant">Includes DNS nameservers and panel access instructions.</span>
+</div>
+</div>
+</div>
+<!-- Drawer Footer -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-end gap-3">
+<button class="px-4 py-2 text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" id="cancel-drawer-btn" type="button">
+          Cancel
+        </button>
+<button class="px-5 py-2 bg-secondary hover:bg-secondary-container text-on-secondary font-label-md text-label-md rounded-lg shadow-sm transition-all" id="save-user-btn" type="button">
+          Provision User
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Interactive Drawer and Bulk-Action Behavior
+  (function() {
+    const openBtn = document.getElementById('open-drawer-btn');
+    const closeBtn = document.getElementById('close-drawer-btn');
+    const cancelBtn = document.getElementById('cancel-drawer-btn');
+    const saveBtn = document.getElementById('save-user-btn');
+    const drawer = document.getElementById('create-user-drawer');
+    const backdrop = document.getElementById('drawer-backdrop');
+    const panel = document.getElementById('drawer-panel');
+
+    function openDrawer() {
+      drawer.classList.remove('pointer-events-none');
+      backdrop.classList.remove('opacity-0');
+      backdrop.classList.add('opacity-100');
+      panel.classList.remove('translate-x-full');
+      panel.classList.add('translate-x-0');
+    }
+
+    function closeDrawer() {
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0');
+      panel.classList.remove('translate-x-0');
+      panel.classList.add('translate-x-full');
+      setTimeout(() => {
+        drawer.classList.add('pointer-events-none');
+      }, 300);
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+    if (saveBtn) {
+      saveBtn.addEventListener('click', () => {
+        saveBtn.innerText = 'Provisioning...';
+        setTimeout(() => {
+          saveBtn.innerText = 'Provision User';
+          closeDrawer();
+        }, 600);
+      });
+    }
+
+    // Checkbox selection telemetry logic
+    const selectAll = document.getElementById('select-all');
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+    const bulkActions = document.getElementById('bulk-actions');
+    const selectedCountSpan = document.getElementById('selected-count');
+
+    function updateBulkState() {
+      const checkedCount = document.querySelectorAll('.row-checkbox:checked').length;
+      if (checkedCount > 0) {
+        bulkActions.classList.remove('hidden');
+        bulkActions.classList.add('flex');
+        selectedCountSpan.innerText = checkedCount;
+      } else {
+        bulkActions.classList.remove('flex');
+        bulkActions.classList.add('hidden');
+      }
+    }
+
+    if (selectAll) {
+      selectAll.addEventListener('change', (e) => {
+        rowCheckboxes.forEach(cb => {
+          cb.checked = e.target.checked;
+        });
+        updateBulkState();
+      });
+    }
+
+    rowCheckboxes.forEach(cb => {
+      cb.addEventListener('change', updateBulkState);
+    });
+
+    // Real-time table filter stub
+    const filterInput = document.getElementById('user-filter-input');
+    if (filterInput) {
+      filterInput.addEventListener('input', (e) => {
+        const val = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+          row.style.display = text.includes(val) ? '' : 'none';
+        });
+      });
+    }
+  })();
+</script></main></div></body></html>
