@@ -38,10 +38,8 @@ export async function connectDb() {
   try {
     await sequelize.authenticate();
     console.log(`[Database] Connection established successfully using ${DB_DIALECT} dialect.`);
-    if (DB_DIALECT === "sqlite" || process.env.NODE_ENV === "test") {
-      await sequelize.sync({ alter: true });
-      console.log("[Database] Schema synchronized successfully.");
-    }
+    await sequelize.sync({ alter: true });
+    console.log("[Database] Schema synchronized successfully.");
   } catch (error) {
     console.warn(`[Database] Connection warning (${DB_DIALECT}):`, (error as Error).message);
   }
