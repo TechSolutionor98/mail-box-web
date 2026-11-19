@@ -5,66 +5,15 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
 
-type RoleType = "SUPER_ADMIN" | "USER" | "MAILBOX_USER";
-
-interface QuickAccount {
-  title: string;
-  badge: string;
-  badgeColor: string;
-  email: string;
-  pass: string;
-  role: RoleType;
-  dest: string;
-  desc: string;
-  icon: string;
-}
-
-const QUICK_ACCOUNTS: QuickAccount[] = [
-  {
-    title: "1. Super Admin",
-    badge: "Full Control",
-    badgeColor: "bg-red-500/10 text-red-400 border-red-500/30",
-    email: "superadmin@techsolutionor.com",
-    pass: "Admin@123456",
-    role: "SUPER_ADMIN",
-    dest: "/admin",
-    desc: "Platform administration, packages, all users & audit logs",
-    icon: "shield_person",
-  },
-  {
-    title: "2. Domain Owner",
-    badge: "User Account",
-    badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30",
-    email: "user@apexdesign.io",
-    pass: "User@123456",
-    role: "USER",
-    dest: "/dashboard",
-    desc: "Manages apexdesign.io, DNS records, & creates mailboxes",
-    icon: "domain",
-  },
-  {
-    title: "3. Mailbox User",
-    badge: "Webmail Login",
-    badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
-    email: "alex@apexdesign.io",
-    pass: "Alex@123456",
-    role: "MAILBOX_USER",
-    dest: "/webmail",
-    desc: "Direct webmail account to read, compose & send emails",
-    icon: "mark_email_unread",
-  },
-];
-
 export default function LoginPage() {
   const router = useRouter();
   const [authMode, setAuthMode] = useState<"login" | "register">("login");
-  const [email, setEmail] = useState("superadmin@techsolutionor.com");
-  const [password, setPassword] = useState("Admin@123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const [selectedRole, setSelectedRole] = useState<RoleType>("SUPER_ADMIN");
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
@@ -79,15 +28,6 @@ export default function LoginPage() {
       }
     }
   }, [router]);
-
-  const selectQuickAccount = (acc: QuickAccount) => {
-    setEmail(acc.email);
-    setPassword(acc.pass);
-    setSelectedRole(acc.role);
-    setErrorMsg("");
-    setSuccessMsg("");
-    setAuthMode("login");
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,7 +47,7 @@ export default function LoginPage() {
           setSuccessMsg("Account registered successfully! Redirecting to your dashboard...");
           setTimeout(() => {
             router.push(res.data?.redirectUrl || "/dashboard");
-          }, 1000);
+          }, 900);
           return;
         } else {
           setErrorMsg(res.error || "Registration failed.");
@@ -123,7 +63,10 @@ export default function LoginPage() {
         localStorage.setItem("auth_email", res.data.user.email);
         localStorage.setItem("auth_user", JSON.stringify(res.data.user));
 
-        router.push(res.data.redirectUrl || "/dashboard");
+        setSuccessMsg("Signed in successfully. Launching console...");
+        setTimeout(() => {
+          router.push(res.data?.redirectUrl || "/dashboard");
+        }, 600);
         return;
       }
 
@@ -132,300 +75,250 @@ export default function LoginPage() {
         return;
       }
 
-      // Fallback
-      let role: RoleType = "USER";
-      let dest = "/dashboard";
-      const lowerEmail = email.toLowerCase().trim();
-      if (lowerEmail.includes("superadmin") || lowerEmail.includes("admin")) {
-        role = "SUPER_ADMIN";
-        dest = "/admin";
-      } else if (lowerEmail.includes("@apexdesign.io") && lowerEmail !== "user@apexdesign.io") {
-        role = "MAILBOX_USER";
-        dest = "/webmail";
-      }
-
-      localStorage.setItem("auth_role", role);
-      localStorage.setItem("auth_email", email);
-      localStorage.setItem(
-        "auth_user",
-        JSON.stringify({ id: "session_id", email, role })
-      );
-      router.push(dest);
+      setErrorMsg("Invalid credentials. Please verify your email and password.");
     } catch (err: any) {
-      setErrorMsg(err.message || "Authentication failed");
+      setErrorMsg(err.message || "Unable to reach server. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 sm:p-6 lg:p-8">
-      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        {/* Left Column: Login Form */}
-        <div className="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute -top-24 -right-24 w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div className="min-h-screen bg-[#070b14] text-slate-100 flex flex-col justify-between relative overflow-hidden select-none">
+      {/* Subtle Background Glows */}
+      <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
+      <div className="absolute -top-32 left-1/4 w-[600px] h-[300px] bg-indigo-600/15 blur-[120px] pointer-events-none"></div>
+      <div className="absolute -bottom-32 right-1/4 w-[600px] h-[300px] bg-cyan-600/15 blur-[120px] pointer-events-none"></div>
 
-          <div className="relative z-10 space-y-6">
+      {/* Top Navbar */}
+      <header className="relative z-10 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md px-6 py-4 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-500 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+            <span className="material-symbols-outlined text-xl">dns</span>
+          </div>
+          <div>
+            <h1 className="font-extrabold text-white tracking-tight leading-none text-base">
+              TechSolutionor<span className="text-cyan-400">Panel</span>
+            </h1>
+            <span className="text-[10px] text-slate-400 font-mono tracking-wide">HOSTING & EMAIL SUITE</span>
+          </div>
+        </Link>
+
+        <div className="flex items-center gap-4">
+          <Link
+            href="/webmail"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs text-slate-300 hover:text-white transition"
+          >
+            <span className="material-symbols-outlined text-emerald-400 text-sm">mark_email_unread</span>
+            <span>Webmail Portal</span>
+          </Link>
+          <span className="px-2.5 py-1 text-[11px] font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Cloud Online
+          </span>
+        </div>
+      </header>
+
+      {/* Center Main Section */}
+      <main className="relative z-10 flex-1 flex items-center justify-center p-4 py-8">
+        <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Left Form Column (7 cols) */}
+          <div className="lg:col-span-7 bg-slate-900/90 border border-slate-800/90 rounded-3xl p-6 sm:p-9 shadow-2xl backdrop-blur-xl space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-500 flex items-center justify-center text-white font-black text-xl shadow-lg">
-                  <span className="material-symbols-outlined text-2xl">dns</span>
-                </div>
-                <div>
-                  <h1 className="font-bold text-white text-base leading-none">HostControl</h1>
-                  <span className="text-[10px] text-indigo-400 font-semibold tracking-wide">
-                    MULTI-ROLE AUTHENTICATION
-                  </span>
-                </div>
-              </div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-semibold border border-emerald-500/20">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Auth Node Ready
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-indigo-400 font-bold">
+                Client Control Console
               </span>
-            </div>
-
-            {/* Headline */}
-            <div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                {authMode === "register" ? "Create Domain Owner Account" : "Control Panel Sign In"}
+                {authMode === "register" ? "Create Hosting Account" : "Sign In to Your Panel"}
               </h2>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-400">
                 {authMode === "register"
-                  ? "Register as a new domain owner to add domains and provision mailboxes."
-                  : "Domain Owners & Super Admins sign in here to manage domains & infrastructure. Email users log in at mail.techsolutionor.com."}
+                  ? "Get started with custom domains, full DNS control, and high-deliverability mailboxes."
+                  : "Access your dashboard to manage domains, configure DNS zones, and provision email inboxes."}
               </p>
             </div>
 
-            {/* Mode Switcher: Sign In vs Register */}
+            {/* Mode Toggle (Sign In / Register) */}
             <div className="flex rounded-xl bg-slate-950 p-1 border border-slate-800">
               <button
                 type="button"
                 onClick={() => { setAuthMode("login"); setErrorMsg(""); setSuccessMsg(""); }}
-                className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
+                className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2 ${
                   authMode === "login"
-                    ? "bg-indigo-600 text-white shadow"
+                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
                 <span className="material-symbols-outlined text-sm">login</span>
-                Sign In to Panel
+                <span>Sign In</span>
               </button>
               <button
                 type="button"
                 onClick={() => { setAuthMode("register"); setErrorMsg(""); setSuccessMsg(""); }}
-                className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
+                className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2 ${
                   authMode === "register"
-                    ? "bg-indigo-600 text-white shadow"
+                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
                 <span className="material-symbols-outlined text-sm">person_add</span>
-                Register New Account
+                <span>Create Account</span>
               </button>
             </div>
 
-            {/* 3-Role Quick Switcher (visible during Login mode) */}
-            {authMode === "login" && (
-              <div className="space-y-2">
-                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-sm text-indigo-400">touch_app</span>
-                  <span>Select 1-Click Role Credentials to Test:</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  {QUICK_ACCOUNTS.map((acc) => (
-                    <button
-                      key={acc.role}
-                      type="button"
-                      onClick={() => selectQuickAccount(acc)}
-                      className={`p-3 rounded-xl border text-left transition-all relative overflow-hidden flex flex-col justify-between ${
-                        email === acc.email
-                          ? "bg-indigo-600/20 border-indigo-500 ring-2 ring-indigo-500/40"
-                          : "bg-slate-950/60 border-slate-800 hover:border-slate-700"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-1 mb-1.5">
-                        <span className="material-symbols-outlined text-lg text-slate-300">{acc.icon}</span>
-                        <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full border ${acc.badgeColor}`}>
-                          {acc.badge}
-                        </span>
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">{acc.title}</div>
-                        <div className="text-[10px] text-slate-400 truncate mt-0.5">{acc.email}</div>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
+            {/* Alert Messages */}
             {successMsg && (
-              <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-xs text-emerald-400 flex items-center gap-2">
-                <span className="material-symbols-outlined text-base">check_circle</span>
-                <span>{successMsg}</span>
+              <div className="p-3.5 bg-emerald-950/60 border border-emerald-800/70 rounded-xl text-emerald-300 text-xs flex items-center gap-2.5 shadow-lg shadow-emerald-950/40">
+                <span className="material-symbols-outlined text-emerald-400 text-base animate-spin">progress_activity</span>
+                <span className="font-medium">{successMsg}</span>
               </div>
             )}
 
             {errorMsg && (
-              <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-xs text-red-400 flex items-center gap-2">
-                <span className="material-symbols-outlined text-base">error</span>
-                <span>{errorMsg}</span>
+              <div className="p-3.5 bg-rose-950/60 border border-rose-800/70 rounded-xl text-rose-300 text-xs flex items-start gap-2.5 shadow-lg shadow-rose-950/40">
+                <span className="material-symbols-outlined text-rose-400 text-base mt-0.5">error</span>
+                <span className="font-medium flex-1">{errorMsg}</span>
               </div>
             )}
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-300 flex items-center justify-between">
-                  Email Address
-                  <span className="text-[10px] text-indigo-400 font-mono">
-                    {email.includes("superadmin")
-                      ? "Super Admin Account"
-                      : email.includes("user@")
-                      ? "Domain Owner (User)"
-                      : "Mailbox / Webmail User"}
-                  </span>
+                  <span>Email Address</span>
                 </label>
                 <div className="relative">
-                  <span className="material-symbols-outlined absolute left-3.5 top-3 text-slate-400 text-lg">
-                    alternate_email
+                  <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-lg">
+                    mail
                   </span>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@domain.com"
-                    className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-all font-mono"
+                    placeholder="name@yourcompany.com"
+                    className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl pl-10 pr-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
                   />
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-300 block">Password</label>
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold text-slate-300">Password</label>
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-xs text-slate-400 hover:text-indigo-400 transition"
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
                 <div className="relative">
-                  <span className="material-symbols-outlined absolute left-3.5 top-3 text-slate-400 text-lg">
-                    lock_outline
+                  <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-lg">
+                    lock
                   </span>
                   <input
                     type={showPassword ? "text" : "password"}
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-11 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-all font-mono"
+                    placeholder="••••••••••••"
+                    className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl pl-10 pr-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
                   />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3.5 top-3 text-slate-400 hover:text-white"
-                  >
-                    <span className="material-symbols-outlined text-lg">
-                      {showPassword ? "visibility_off" : "visibility"}
-                    </span>
-                  </button>
                 </div>
-              </div>
-
-              <div className="flex items-center justify-between text-xs pt-1">
-                <label className="flex items-center gap-2 text-slate-400 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="rounded bg-slate-950 border-slate-800 text-indigo-600 focus:ring-0"
-                  />
-                  Remember session
-                </label>
-                <span className="text-slate-500 text-[11px]">BCrypt + JWT 256</span>
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all"
+                className="w-full bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-indigo-600/25 transition-all transform active:scale-[0.99] disabled:opacity-50 mt-2"
               >
                 {loading ? (
-                  <span>Authenticating...</span>
+                  <>
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    <span>Processing Authorization...</span>
+                  </>
                 ) : (
                   <>
-                    <span>
-                      {authMode === "register"
-                        ? "Create Account & Go to Dashboard"
-                        : "Sign In to Selected Account"}
+                    <span className="material-symbols-outlined text-base">
+                      {authMode === "register" ? "person_add" : "login"}
                     </span>
-                    <span className="material-symbols-outlined text-base">arrow_forward</span>
+                    <span>{authMode === "register" ? "Create Free Account" : "Access Control Panel"}</span>
                   </>
                 )}
               </button>
             </form>
-          </div>
 
-          <div className="mt-6 pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
-            <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-              <span className="material-symbols-outlined text-sm">verified_user</span> Multi-Tier Security Active
-            </span>
-            <span className="text-slate-500 text-[10px]">
-              Super Admin • Domain User • Mailbox Client
-            </span>
-          </div>
-        </div>
-
-        {/* Right Column: Two-Portal Architecture & Roles Breakdown */}
-        <div className="lg:col-span-5 flex flex-col justify-between gap-6">
-          <div className="bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 border border-indigo-700/50 p-6 sm:p-8 rounded-3xl shadow-xl space-y-5">
-            <div className="space-y-2">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold border border-indigo-500/30">
-                <span className="material-symbols-outlined text-sm">hub</span> Two-Portal System
-              </span>
-              <h3 className="text-xl font-extrabold text-white">How The System Works</h3>
-            </div>
-
-            <div className="space-y-3 text-xs">
-              <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-indigo-400 text-lg">admin_panel_settings</span>
-                  <span className="font-bold text-white">1. Main Hosting Panel</span>
-                </div>
-                <div className="text-[11px] text-slate-400 pl-6">
-                  Domain owners log in at the main panel to add domains, verify DNS records, and create mailbox accounts with passwords.
-                </div>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-emerald-400 text-lg">mail</span>
-                  <span className="font-bold text-emerald-300">2. Dedicated Webmail Node</span>
-                </div>
-                <div className="text-[11px] text-emerald-200/80 pl-6">
-                  Created email users log in at <strong className="text-white font-mono">mail.techsolutionor.com</strong> with their email & password to read and send emails.
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-2">
+            {/* Bottom Help */}
+            <div className="pt-2 border-t border-slate-800/70 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+              <span>Looking for Webmail Client?</span>
               <Link
                 href="/webmail"
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs transition-all shadow-lg shadow-emerald-900/30"
+                className="font-bold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1 transition"
               >
-                <span className="material-symbols-outlined text-white text-base">open_in_new</span>
-                <span>Go to Webmail Node (mail.techsolutionor.com)</span>
+                <span>mail.techsolutionor.com</span>
+                <span className="material-symbols-outlined text-xs">arrow_forward</span>
               </Link>
             </div>
           </div>
 
-          <div className="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl flex items-start gap-4 shadow-lg">
-            <div className="p-2.5 bg-indigo-500/10 text-indigo-400 rounded-xl shrink-0">
-              <span className="material-symbols-outlined text-xl">dns</span>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold text-white">Client Domain Setup (MX Record)</h4>
-              <p className="text-[11px] text-slate-400 mt-0.5">
-                Each domain owner points their <strong className="text-slate-200">MX record</strong> to <code className="text-indigo-400">mail.techsolutionor.com</code> and <code className="text-indigo-400">CNAME webmail</code> to access their mail.
-              </p>
+          {/* Right Highlights Column (5 cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="bg-gradient-to-br from-indigo-950/60 via-slate-900 to-slate-950 border border-slate-800 p-6 sm:p-7 rounded-3xl shadow-xl space-y-5">
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">
+                  Next-Gen Hosting
+                </span>
+                <h3 className="text-xl font-extrabold text-white">All-In-One Platform</h3>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Enterprise mail infrastructure with automated PowerDNS syncing and high-deliverability email clusters.
+                </p>
+              </div>
+
+              <div className="space-y-3 pt-2">
+                {[
+                  {
+                    icon: "domain",
+                    title: "Domain Management",
+                    desc: "Connect your custom domains with instant authoritative DNS zone provisioning.",
+                    color: "text-indigo-400 bg-indigo-500/10",
+                  },
+                  {
+                    icon: "mail",
+                    title: "Mailbox Provisioning",
+                    desc: "Create business email accounts with IMAP (993) & SMTP (465) secure TLS access.",
+                    color: "text-emerald-400 bg-emerald-500/10",
+                  },
+                  {
+                    icon: "security",
+                    title: "Email Deliverability",
+                    desc: "Automated SPF, DKIM, and DMARC record generation for zero-spam placement.",
+                    color: "text-cyan-400 bg-cyan-500/10",
+                  },
+                ].map((feat, i) => (
+                  <div key={i} className="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800/80 flex items-start gap-3">
+                    <div className={`p-2 rounded-xl shrink-0 ${feat.color}`}>
+                      <span className="material-symbols-outlined text-lg">{feat.icon}</span>
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-white">{feat.title}</h4>
+                      <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">{feat.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-slate-800/80 bg-slate-950/70 backdrop-blur-md px-6 py-3 text-center">
+        <p className="text-[11px] text-slate-500 font-mono">
+          © 2026 TechSolutionor Cloud Suite • Secure Multi-Tenant Hosting Platform
+        </p>
+      </footer>
     </div>
   );
 }

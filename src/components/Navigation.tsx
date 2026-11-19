@@ -18,8 +18,8 @@ export default function Navigation() {
     if (savedEmail) setEmail(savedEmail);
   }, [pathname]);
 
-  // If on login page, render full width without sidebar navigation
-  if (pathname === "/login") {
+  // If on login pages, render full width without sidebar navigation
+  if (pathname === "/login" || pathname === "/admin/login") {
     return null;
   }
 
