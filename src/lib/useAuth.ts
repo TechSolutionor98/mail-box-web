@@ -16,6 +16,13 @@ export function useRequireAuth(allowedRoles?: string[]) {
 
     // 1. Not logged in -> redirect to login page
     if (!token || !savedRole) {
+      if (typeof window !== "undefined") {
+        const host = window.location.hostname.toLowerCase();
+        if (host.startsWith("superadmin")) {
+          router.replace("/admin/login");
+          return;
+        }
+      }
       router.replace("/login");
       return;
     }

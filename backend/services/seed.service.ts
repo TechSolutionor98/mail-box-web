@@ -32,31 +32,59 @@ export async function seedInitialData() {
       console.log("[Seed] Created Pro Business Cloud package.");
     }
 
-    // 2. Seed Super Admin Accounts
+    // 2. Seed Super Admin & Admin Accounts
+    const defaultSuperPass = await hashPassword("Admin@123456");
+
     let primarySuperAdmin = await User.findOne({ where: { email: "superadmin@techsolutionor.com" } });
     if (!primarySuperAdmin) {
-      const pass = await hashPassword("Admin@123456");
       primarySuperAdmin = await User.create({
         email: "superadmin@techsolutionor.com",
-        passwordHash: pass,
+        passwordHash: defaultSuperPass,
         role: "SUPER_ADMIN",
         status: "ACTIVE",
         totpEnabled: false,
       });
       console.log("[Seed] Created Super Admin: superadmin@techsolutionor.com (Password: Admin@123456)");
+    } else {
+      primarySuperAdmin.role = "SUPER_ADMIN";
+      primarySuperAdmin.status = "ACTIVE";
+      primarySuperAdmin.passwordHash = defaultSuperPass;
+      await primarySuperAdmin.save();
+      console.log("[Seed] Verified Super Admin: superadmin@techsolutionor.com (Password: Admin@123456)");
+    }
+
+    let secondaryAdmin = await User.findOne({ where: { email: "admin@techsolutionor.com" } });
+    if (!secondaryAdmin) {
+      secondaryAdmin = await User.create({
+        email: "admin@techsolutionor.com",
+        passwordHash: defaultSuperPass,
+        role: "ADMIN",
+        status: "ACTIVE",
+        totpEnabled: false,
+      });
+      console.log("[Seed] Created Admin User: admin@techsolutionor.com (Password: Admin@123456)");
+    } else {
+      secondaryAdmin.role = "ADMIN";
+      secondaryAdmin.status = "ACTIVE";
+      secondaryAdmin.passwordHash = defaultSuperPass;
+      await secondaryAdmin.save();
     }
 
     let superAdmin = await User.findOne({ where: { email: "superadmin@hostcontrol.io" } });
     if (!superAdmin) {
-      const superAdminPass = await hashPassword("Admin@123456");
       superAdmin = await User.create({
         email: "superadmin@hostcontrol.io",
-        passwordHash: superAdminPass,
+        passwordHash: defaultSuperPass,
         role: "SUPER_ADMIN",
         status: "ACTIVE",
         totpEnabled: false,
       });
       console.log("[Seed] Created Super Admin: superadmin@hostcontrol.io (Password: Admin@123456)");
+    } else {
+      superAdmin.role = "SUPER_ADMIN";
+      superAdmin.status = "ACTIVE";
+      superAdmin.passwordHash = defaultSuperPass;
+      await superAdmin.save();
     }
 
     // 3. Seed Client User (Domain Owner who creates mailboxes)

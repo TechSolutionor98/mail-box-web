@@ -40,6 +40,11 @@ export function middleware(request: NextRequest) {
       url.pathname = "/admin";
       return NextResponse.rewrite(url);
     }
+    if (pathname === "/login") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/admin/login";
+      return NextResponse.rewrite(url);
+    }
     return NextResponse.next();
   }
 
