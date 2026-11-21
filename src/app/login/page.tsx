@@ -8,6 +8,8 @@ import { api } from "@/lib/api";
 export default function LoginPage() {
   const router = useRouter();
   const [authMode, setAuthMode] = useState<"login" | "register">("login");
+
+  // Common Auth States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -15,6 +17,17 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+
+  // Registration Specific Fields
+  const [fullName, setFullName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [primaryDomain, setPrimaryDomain] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [selectedPlanId, setSelectedPlanId] = useState<string>("");
+  const [agreeTerms, setAgreeTerms] = useState(true);
+  const [packages, setPackages] = useState<any[]>([]);
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
@@ -28,6 +41,17 @@ export default function LoginPage() {
         router.push("/dashboard");
       }
     }
+
+    // Fetch packages for registration plan selection
+    api.auth
+      .packages()
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          setPackages(res.data);
+          setSelectedPlanId(res.data[0].id);
+        }
+      })
+      .catch(() => {});
   }, [router]);
 
   // Dynamic Password Strength Calculation (for registration mode)
@@ -46,6 +70,7 @@ export default function LoginPage() {
   };
 
   const strength = getPasswordStrength(password);
+  const passwordsMatch = confirmPassword ? password === confirmPassword : true;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,20 +80,59 @@ export default function LoginPage() {
 
     try {
       if (authMode === "register") {
+        if (!fullName.trim()) {
+          setErrorMsg("Please enter your Full Name.");
+          setLoading(false);
+          return;
+        }
+
+        if (!email.trim() || !email.includes("@")) {
+          setErrorMsg("Please enter a valid Account Email Address.");
+          setLoading(false);
+          return;
+        }
+
+        if (!phoneNumber.trim()) {
+          setErrorMsg("Please enter your Phone / WhatsApp Number for account security.");
+          setLoading(false);
+          return;
+        }
+
         if (password.length < 6) {
           setErrorMsg("Password must be at least 6 characters long.");
           setLoading(false);
           return;
         }
 
-        const res = await api.auth.register(email.trim(), password);
+        if (password !== confirmPassword) {
+          setErrorMsg("Passwords do not match. Please verify your confirm password.");
+          setLoading(false);
+          return;
+        }
+
+        if (!agreeTerms) {
+          setErrorMsg("You must accept the Hosting Terms of Service & SLA to continue.");
+          setLoading(false);
+          return;
+        }
+
+        const res = await api.auth.register({
+          email: email.trim(),
+          password,
+          fullName: fullName.trim(),
+          companyName: companyName.trim() || undefined,
+          phoneNumber: phoneNumber.trim() || undefined,
+          primaryDomain: primaryDomain.trim() || undefined,
+          packageId: selectedPlanId || undefined,
+        });
+
         if (res.success && res.data) {
           localStorage.setItem("auth_token", res.data.accessToken);
           localStorage.setItem("auth_role", res.data.user.role);
           localStorage.setItem("auth_email", res.data.user.email);
           localStorage.setItem("auth_user", JSON.stringify(res.data.user));
 
-          setSuccessMsg("Account successfully provisioned! Launching your control panel...");
+          setSuccessMsg("Hosting account created & DNS cluster provisioned! Launching dashboard...");
           setTimeout(() => {
             router.push(res.data?.redirectUrl || "/dashboard");
           }, 800);
@@ -157,10 +221,9 @@ export default function LoginPage() {
 
       {/* Main Container */}
       <main className="relative z-10 flex-1 flex items-center justify-center p-4 sm:p-8 py-8 sm:py-12">
-        <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
+        <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Hero & Visual Mockup Showcase (5 cols on Desktop) */}
-          <div className="lg:col-span-5 space-y-6 hidden lg:block">
+          <div className="lg:col-span-5 space-y-6 hidden lg:block sticky top-8">
             {/* Tagline */}
             <div className="space-y-3">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-indigo-500/20 to-cyan-500/20 text-indigo-300 text-xs font-mono font-semibold border border-indigo-500/30">
@@ -230,7 +293,7 @@ export default function LoginPage() {
 
           {/* Right Form Card (7 cols on Desktop) */}
           <div className="lg:col-span-7">
-            <div className="bg-slate-900/85 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-2xl space-y-6 relative overflow-hidden">
+            <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-9 shadow-2xl backdrop-blur-2xl space-y-6 relative overflow-hidden">
               {/* Subtle Card Glow Header */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-cyan-400 to-indigo-500"></div>
 
@@ -247,7 +310,7 @@ export default function LoginPage() {
                 </h2>
                 <p className="text-xs text-slate-400 leading-relaxed">
                   {authMode === "register"
-                    ? "Set up your credentials to register domains, manage DNS zones, and provision mailboxes."
+                    ? "Complete your profile details below to provision hosting resources, automated DNS zones, and business mailboxes."
                     : "Enter your registered email and password to access your domains and mail management suite."}
                 </p>
               </div>
@@ -307,123 +370,394 @@ export default function LoginPage() {
 
               {/* Authentication Form */}
               <form onSubmit={handleSubmit} className="space-y-4 pt-1">
-                {/* Email Field */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-sm text-indigo-400">alternate_email</span>
-                    <span>Account Email Address</span>
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="name@yourdomain.com"
-                      autoComplete="email"
-                      className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600 font-mono"
-                    />
-                  </div>
-                </div>
-
-                {/* Password Field */}
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
-                      <span className="material-symbols-outlined text-sm text-indigo-400">lock</span>
-                      <span>Password</span>
-                    </label>
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="text-xs text-slate-400 hover:text-indigo-400 transition"
-                    >
-                      {showPassword ? "Hide" : "Show"}
-                    </button>
-                  </div>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      required
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="••••••••••••"
-                      autoComplete={authMode === "register" ? "new-password" : "current-password"}
-                      className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600 font-mono"
-                    />
-                  </div>
-
-                  {/* Password Strength Meter (Only on Registration) */}
-                  {authMode === "register" && password && (
-                    <div className="space-y-1.5 pt-1 animate-in fade-in">
-                      <div className="flex justify-between items-center text-[10px] font-mono">
-                        <span className="text-slate-400">Password Strength:</span>
-                        <span className={`font-bold ${
-                          strength.label === "Strong" ? "text-emerald-400" :
-                          strength.label === "Good" ? "text-blue-400" :
-                          strength.label === "Fair" ? "text-amber-400" : "text-rose-400"
-                        }`}>
-                          {strength.label}
-                        </span>
+                {/* ---------------- REGISTER SPECIFIC FIELDS ---------------- */}
+                {authMode === "register" && (
+                  <div className="space-y-4">
+                    {/* Row 1: Full Name & Company Name */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                          <span className="material-symbols-outlined text-sm text-indigo-400">person</span>
+                          <span>Full Name <span className="text-rose-400">*</span></span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={fullName}
+                          onChange={(e) => setFullName(e.target.value)}
+                          placeholder="e.g. Alex Johnson"
+                          className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
+                        />
                       </div>
-                      <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                        <div
-                          className={`h-full ${strength.color} transition-all duration-300 rounded-full`}
-                          style={{ width: `${strength.score}%` }}
-                        ></div>
+
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                          <span className="material-symbols-outlined text-sm text-indigo-400">business</span>
+                          <span>Company / Brand <span className="text-slate-500 text-[10px]">(Optional)</span></span>
+                        </label>
+                        <input
+                          type="text"
+                          value={companyName}
+                          onChange={(e) => setCompanyName(e.target.value)}
+                          placeholder="e.g. Apex Digital Ltd"
+                          className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
+                        />
                       </div>
                     </div>
-                  )}
-                </div>
 
-                {/* Remember Me Option (Login Mode) */}
-                {authMode === "login" && (
-                  <div className="flex items-center justify-between text-xs pt-1">
-                    <label className="flex items-center gap-2 text-slate-400 hover:text-slate-300 cursor-pointer">
+                    {/* Row 2: Account Email & Phone / WhatsApp */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                          <span className="material-symbols-outlined text-sm text-indigo-400">alternate_email</span>
+                          <span>Account Email <span className="text-rose-400">*</span></span>
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="name@yourdomain.com"
+                          autoComplete="email"
+                          className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600 font-mono"
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                          <span className="material-symbols-outlined text-sm text-indigo-400">call</span>
+                          <span>Phone / WhatsApp <span className="text-rose-400">*</span></span>
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          value={phoneNumber}
+                          onChange={(e) => setPhoneNumber(e.target.value)}
+                          placeholder="+92 300 1234567"
+                          className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600 font-mono"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Row 3: Primary Domain to Attach */}
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between">
+                        <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                          <span className="material-symbols-outlined text-sm text-indigo-400">dns</span>
+                          <span>Primary Domain to Host <span className="text-slate-500 text-[10px]">(Optional)</span></span>
+                        </label>
+                        <span className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-full border border-cyan-500/20">
+                          Auto PowerDNS Zone
+                        </span>
+                      </div>
                       <input
-                        type="checkbox"
-                        checked={rememberMe}
-                        onChange={(e) => setRememberMe(e.target.checked)}
-                        className="w-3.5 h-3.5 rounded bg-slate-950 border-slate-800 text-indigo-600 focus:ring-0 focus:ring-offset-0"
+                        type="text"
+                        value={primaryDomain}
+                        onChange={(e) => setPrimaryDomain(e.target.value)}
+                        placeholder="e.g. mycompany.com (can also be added later)"
+                        className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600 font-mono"
                       />
-                      <span>Keep me signed in</span>
-                    </label>
+                      <p className="text-[11px] text-slate-500">
+                        Entering your domain now will pre-configure its DNS records and Mailcow cluster on registration.
+                      </p>
+                    </div>
+
+                    {/* Row 4: Hosting Package Selector */}
+                    <div className="space-y-2 pt-1">
+                      <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-sm text-indigo-400">package_2</span>
+                        <span>Select Hosting Plan</span>
+                      </label>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {packages.length > 0 ? (
+                          packages.map((pkg) => {
+                            const isSelected = selectedPlanId === pkg.id;
+                            const isPro = pkg.name.toLowerCase().includes("pro") || pkg.name.toLowerCase().includes("business");
+                            return (
+                              <button
+                                key={pkg.id}
+                                type="button"
+                                onClick={() => setSelectedPlanId(pkg.id)}
+                                className={`text-left p-3.5 rounded-2xl border transition-all relative ${
+                                  isSelected
+                                    ? "bg-indigo-950/50 border-indigo-500/80 shadow-lg shadow-indigo-600/20 ring-1 ring-indigo-500"
+                                    : "bg-slate-950/60 border-slate-800 hover:border-slate-700"
+                                }`}
+                              >
+                                {isPro && (
+                                  <span className="absolute -top-2.5 right-3 text-[9px] font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-indigo-600 text-white px-2 py-0.5 rounded-full shadow">
+                                    Recommended
+                                  </span>
+                                )}
+                                <div className="flex items-center justify-between">
+                                  <h4 className="font-bold text-white text-xs">{pkg.name}</h4>
+                                  <span className="font-mono text-cyan-400 font-black text-xs">
+                                    ${Number(pkg.price).toFixed(2)}/mo
+                                  </span>
+                                </div>
+                                <div className="text-[11px] text-slate-400 space-y-0.5 mt-2">
+                                  <p>• {pkg.maxDomains} Domains Allowed</p>
+                                  <p>• {pkg.maxMailboxesPerDomain} Mailboxes / Domain</p>
+                                  <p>• {Math.round(pkg.storageQuotaMb / 1024)} GB High-Speed NVMe</p>
+                                </div>
+                              </button>
+                            );
+                          })
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() => setSelectedPlanId("starter")}
+                              className={`text-left p-3.5 rounded-2xl border transition-all ${
+                                selectedPlanId === "starter" || !selectedPlanId
+                                  ? "bg-indigo-950/50 border-indigo-500/80 shadow-lg shadow-indigo-600/20 ring-1 ring-indigo-500"
+                                  : "bg-slate-950/60 border-slate-800"
+                              }`}
+                            >
+                              <div className="flex items-center justify-between">
+                                <h4 className="font-bold text-white text-xs">Starter Cloud</h4>
+                                <span className="font-mono text-cyan-400 font-black text-xs">$4.99/mo</span>
+                              </div>
+                              <div className="text-[11px] text-slate-400 space-y-0.5 mt-2">
+                                <p>• 5 Custom Domains</p>
+                                <p>• 10 Mailboxes / Domain</p>
+                                <p>• 10 GB Storage Quota</p>
+                              </div>
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => setSelectedPlanId("pro")}
+                              className={`text-left p-3.5 rounded-2xl border transition-all relative ${
+                                selectedPlanId === "pro"
+                                  ? "bg-indigo-950/50 border-indigo-500/80 shadow-lg shadow-indigo-600/20 ring-1 ring-indigo-500"
+                                  : "bg-slate-950/60 border-slate-800"
+                              }`}
+                            >
+                              <span className="absolute -top-2.5 right-3 text-[9px] font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-indigo-600 text-white px-2 py-0.5 rounded-full shadow">
+                                Recommended
+                              </span>
+                              <div className="flex items-center justify-between">
+                                <h4 className="font-bold text-white text-xs">Pro Business Cloud</h4>
+                                <span className="font-mono text-cyan-400 font-black text-xs">$14.99/mo</span>
+                              </div>
+                              <div className="text-[11px] text-slate-400 space-y-0.5 mt-2">
+                                <p>• 25 Custom Domains</p>
+                                <p>• 50 Mailboxes / Domain</p>
+                                <p>• 50 GB NVMe Storage</p>
+                              </div>
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Row 5: Password & Confirm Password */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {/* Password */}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                            <span className="material-symbols-outlined text-sm text-indigo-400">lock</span>
+                            <span>Create Password <span className="text-rose-400">*</span></span>
+                          </label>
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="text-[11px] text-slate-400 hover:text-indigo-400 transition"
+                          >
+                            {showPassword ? "Hide" : "Show"}
+                          </button>
+                        </div>
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          required
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          placeholder="Min 6 characters"
+                          autoComplete="new-password"
+                          className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600 font-mono"
+                        />
+                        {/* Password Strength Meter */}
+                        {password && (
+                          <div className="space-y-1 pt-1 animate-in fade-in">
+                            <div className="flex justify-between items-center text-[10px] font-mono">
+                              <span className="text-slate-400">Strength:</span>
+                              <span
+                                className={`font-bold ${
+                                  strength.label === "Strong"
+                                    ? "text-emerald-400"
+                                    : strength.label === "Good"
+                                    ? "text-blue-400"
+                                    : strength.label === "Fair"
+                                    ? "text-amber-400"
+                                    : "text-rose-400"
+                                }`}
+                              >
+                                {strength.label}
+                              </span>
+                            </div>
+                            <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                              <div
+                                className={`h-full ${strength.color} transition-all duration-300 rounded-full`}
+                                style={{ width: `${strength.score}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Confirm Password */}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                            <span className="material-symbols-outlined text-sm text-indigo-400">verified</span>
+                            <span>Confirm Password <span className="text-rose-400">*</span></span>
+                          </label>
+                          <button
+                            type="button"
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            className="text-[11px] text-slate-400 hover:text-indigo-400 transition"
+                          >
+                            {showConfirmPassword ? "Hide" : "Show"}
+                          </button>
+                        </div>
+                        <input
+                          type={showConfirmPassword ? "text" : "password"}
+                          required
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          placeholder="Re-type password"
+                          autoComplete="new-password"
+                          className={`w-full bg-slate-950/80 border text-white text-sm rounded-xl px-4 py-3 focus:outline-none transition-all placeholder:text-slate-600 font-mono ${
+                            confirmPassword && !passwordsMatch
+                              ? "border-rose-500/80 focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
+                              : confirmPassword && passwordsMatch
+                              ? "border-emerald-500/80 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                              : "border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                          }`}
+                        />
+                        {/* Match Indicator */}
+                        {confirmPassword && (
+                          <div className="text-[10px] font-mono pt-1">
+                            {passwordsMatch ? (
+                              <span className="text-emerald-400 flex items-center gap-1">
+                                <span className="material-symbols-outlined text-xs">check_circle</span>
+                                Passwords match
+                              </span>
+                            ) : (
+                              <span className="text-rose-400 flex items-center gap-1">
+                                <span className="material-symbols-outlined text-xs">cancel</span>
+                                Passwords do not match
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Row 6: Agreement Checkbox */}
+                    <div className="pt-1">
+                      <label className="flex items-start gap-2.5 text-xs text-slate-400 hover:text-slate-300 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={agreeTerms}
+                          onChange={(e) => setAgreeTerms(e.target.checked)}
+                          className="w-4 h-4 mt-0.5 rounded bg-slate-950 border-slate-800 text-indigo-600 focus:ring-0 focus:ring-offset-0"
+                        />
+                        <span>
+                          I agree to the{" "}
+                          <span className="text-indigo-400 hover:underline">Terms of Service</span>,{" "}
+                          <span className="text-indigo-400 hover:underline">SLA Guarantee (99.99%)</span>, and{" "}
+                          <span className="text-indigo-400 hover:underline">Privacy Policy</span>.
+                        </span>
+                      </label>
+                    </div>
                   </div>
                 )}
 
-                {/* Registration Checklist */}
-                {authMode === "register" && (
-                  <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400 space-y-1">
-                    <div className="flex items-center gap-1.5 text-slate-300 font-semibold">
-                      <span className="material-symbols-outlined text-xs text-indigo-400">check_circle</span>
-                      <span>Account includes:</span>
+                {/* ---------------- LOGIN SPECIFIC FIELDS ---------------- */}
+                {authMode === "login" && (
+                  <div className="space-y-4">
+                    {/* Email Field */}
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-sm text-indigo-400">alternate_email</span>
+                        <span>Account Email Address</span>
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="name@yourdomain.com"
+                        autoComplete="email"
+                        className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600 font-mono"
+                      />
                     </div>
-                    <p className="pl-4">• 5 Custom Domain slots with PowerDNS zone automation</p>
-                    <p className="pl-4">• 25 Business Mailboxes with IMAP/SMTP access</p>
-                    <p className="pl-4">• Free TLS/SSL auto-provisioning</p>
+
+                    {/* Password Field */}
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between">
+                        <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                          <span className="material-symbols-outlined text-sm text-indigo-400">lock</span>
+                          <span>Password</span>
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="text-xs text-slate-400 hover:text-indigo-400 transition"
+                        >
+                          {showPassword ? "Hide" : "Show"}
+                        </button>
+                      </div>
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="••••••••••••"
+                        autoComplete="current-password"
+                        className="w-full bg-slate-950/80 border border-slate-800 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600 font-mono"
+                      />
+                    </div>
+
+                    {/* Remember Me Option */}
+                    <div className="flex items-center justify-between text-xs pt-1">
+                      <label className="flex items-center gap-2 text-slate-400 hover:text-slate-300 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={rememberMe}
+                          onChange={(e) => setRememberMe(e.target.checked)}
+                          className="w-3.5 h-3.5 rounded bg-slate-950 border-slate-800 text-indigo-600 focus:ring-0 focus:ring-offset-0"
+                        />
+                        <span>Keep me signed in</span>
+                      </label>
+                    </div>
                   </div>
                 )}
 
                 {/* Primary Submit Button */}
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="w-full bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-indigo-600/30 transition-all transform active:scale-[0.99] disabled:opacity-50 mt-3"
+                  disabled={loading || (authMode === "register" && (!passwordsMatch || !agreeTerms))}
+                  className="w-full bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-indigo-600/30 transition-all transform active:scale-[0.99] disabled:opacity-50 mt-4 cursor-pointer disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <>
                       <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
                       <span>
-                        {authMode === "register" ? "Creating Account..." : "Signing in..."}
+                        {authMode === "register" ? "Provisioning Hosting Account..." : "Signing in..."}
                       </span>
                     </>
                   ) : (
                     <>
                       <span className="material-symbols-outlined text-base">
-                        {authMode === "register" ? "person_add" : "login"}
+                        {authMode === "register" ? "rocket_launch" : "login"}
                       </span>
                       <span>
-                        {authMode === "register" ? "Register Hosting Account" : "Sign In to Control Panel"}
+                        {authMode === "register" ? "Register Hosting Account & Launch" : "Sign In to Control Panel"}
                       </span>
                     </>
                   )}
@@ -448,7 +782,6 @@ export default function LoginPage() {
               </div>
             </div>
           </div>
-
         </div>
       </main>
 

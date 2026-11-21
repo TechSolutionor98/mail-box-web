@@ -5,6 +5,10 @@ export interface UserAttributes {
   id: string;
   email: string;
   passwordHash: string;
+  fullName?: string | null;
+  companyName?: string | null;
+  phoneNumber?: string | null;
+  primaryDomain?: string | null;
   role: "SUPER_ADMIN" | "ADMIN" | "USER";
   status: "ACTIVE" | "SUSPENDED";
   totpSecret?: string | null;
@@ -13,12 +17,16 @@ export interface UserAttributes {
   updatedAt?: Date;
 }
 
-export interface UserCreationAttributes extends Optional<UserAttributes, "id" | "role" | "status" | "totpSecret" | "totpEnabled"> {}
+export interface UserCreationAttributes extends Optional<UserAttributes, "id" | "role" | "status" | "totpSecret" | "totpEnabled" | "fullName" | "companyName" | "phoneNumber" | "primaryDomain"> {}
 
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   declare id!: string;
   declare email!: string;
   declare passwordHash!: string;
+  declare fullName!: string | null;
+  declare companyName!: string | null;
+  declare phoneNumber!: string | null;
+  declare primaryDomain!: string | null;
   declare role!: "SUPER_ADMIN" | "ADMIN" | "USER";
   declare status!: "ACTIVE" | "SUSPENDED";
   declare totpSecret!: string | null;
@@ -47,6 +55,26 @@ User.init(
       type: DataTypes.STRING(255),
       allowNull: false,
       field: "password_hash",
+    },
+    fullName: {
+      type: DataTypes.STRING(150),
+      allowNull: true,
+      field: "full_name",
+    },
+    companyName: {
+      type: DataTypes.STRING(150),
+      allowNull: true,
+      field: "company_name",
+    },
+    phoneNumber: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+      field: "phone_number",
+    },
+    primaryDomain: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      field: "primary_domain",
     },
     role: {
       type: DataTypes.ENUM("SUPER_ADMIN", "ADMIN", "USER"),

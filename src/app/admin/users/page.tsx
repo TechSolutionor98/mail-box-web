@@ -41,8 +41,8 @@ export default function AdminUsersPage() {
       if (res.success && Array.isArray(res.data)) {
         const mapped: UserAccount[] = res.data.map((u: any) => {
           const emailParts = u.email.split("@");
-          const name = emailParts[0].replace(/[._]/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase());
-          const initials = name
+          const rawName = u.fullName || emailParts[0].replace(/[._]/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase());
+          const initials = rawName
             .split(" ")
             .map((p: string) => p[0])
             .join("")
@@ -61,7 +61,7 @@ export default function AdminUsersPage() {
 
           return {
             id: u.id,
-            name: u.role === "SUPER_ADMIN" ? `${name} (Super Admin)` : name,
+            name: u.role === "SUPER_ADMIN" ? `${rawName} (Super Admin)` : (u.companyName ? `${rawName} • ${u.companyName}` : rawName),
             email: u.email,
             ip: "198.51.100.42",
             initials,

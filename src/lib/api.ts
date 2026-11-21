@@ -56,11 +56,31 @@ export const api = {
         method: "POST",
         body: JSON.stringify({ email, password, totpToken }),
       }),
-    register: (email: string, password: string, packageId?: string) =>
-      apiRequest("/auth/register", {
+    register: (
+      payloadOrEmail:
+        | string
+        | {
+            email: string;
+            password: string;
+            fullName?: string;
+            companyName?: string;
+            phoneNumber?: string;
+            primaryDomain?: string;
+            packageId?: string;
+          },
+      password?: string,
+      packageId?: string
+    ) => {
+      const body =
+        typeof payloadOrEmail === "string"
+          ? { email: payloadOrEmail, password, packageId }
+          : payloadOrEmail;
+      return apiRequest("/auth/register", {
         method: "POST",
-        body: JSON.stringify({ email, password, packageId }),
-      }),
+        body: JSON.stringify(body),
+      });
+    },
+    packages: () => apiRequest<any[]>("/auth/packages"),
     me: () => apiRequest("/auth/me"),
   },
   admin: {

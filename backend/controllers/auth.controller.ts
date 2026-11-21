@@ -2,11 +2,12 @@ import { Request, Response } from "express";
 import { User, ResetToken, Mailbox, Domain, Package, UserPackage } from "../models";
 import { comparePassword, generateAccessToken, generateRefreshToken, hashPassword, generateTotpSecret, verifyTotpToken, TokenPayload } from "../utils/security";
 import { logActivity } from "../services/log.service";
+import * as domainService from "../services/domain.service";
 import crypto from "crypto";
 
 export async function register(req: Request, res: Response) {
   try {
-    const { email, password, packageId } = req.body;
+    const { email, password, fullName, companyName, phoneNumber, primaryDomain, packageId } = req.body;
     if (!email || !password) {
       return res.status(400).json({ success: false, error: "Email and password are required." });
     }
@@ -24,6 +25,10 @@ export async function register(req: Request, res: Response) {
     const user = await User.create({
       email: normalizedEmail,
       passwordHash,
+      fullName: fullName ? String(fullName).trim() : null,
+      companyName: companyName ? String(companyName).trim() : null,
+      phoneNumber: phoneNumber ? String(phoneNumber).trim() : null,
+      primaryDomain: primaryDomain ? String(primaryDomain).trim().toLowerCase() : null,
       role: "USER",
       status: "ACTIVE",
       totpEnabled: false,
@@ -48,11 +53,38 @@ export async function register(req: Request, res: Response) {
       });
     }
 
+    // Auto-provision initial domain if provided
+    if (primaryDomain && String(primaryDomain).trim()) {
+      try {
+        const cleanDomain = String(primaryDomain)
+          .trim()
+          .toLowerCase()
+          .replace(/^https?:\/\//, "")
+          .replace(/\/.*$/, "");
+        if (cleanDomain.includes(".") && !cleanDomain.includes(" ")) {
+          await domainService.createDomain(user.id, cleanDomain);
+        }
+      } catch (domainErr: any) {
+        console.warn(`[Auto-Domain Setup] Could not auto-add domain during registration:`, domainErr.message);
+      }
+    }
+
     const payload: TokenPayload = { userId: user.id, email: user.email, role: "USER" };
     const accessToken = generateAccessToken(payload);
     const refreshToken = generateRefreshToken(payload);
 
-    await logActivity(user.id, "USER_REGISTERED", { email: user.email, package: pkg?.name }, req.ip);
+    await logActivity(
+      user.id,
+      "USER_REGISTERED",
+      {
+        email: user.email,
+        fullName: user.fullName,
+        company: user.companyName,
+        package: pkg?.name,
+        primaryDomain: user.primaryDomain,
+      },
+      req.ip
+    );
 
     return res.status(201).json({
       success: true,
@@ -64,6 +96,10 @@ export async function register(req: Request, res: Response) {
         user: {
           id: user.id,
           email: user.email,
+          fullName: user.fullName,
+          companyName: user.companyName,
+          phoneNumber: user.phoneNumber,
+          primaryDomain: user.primaryDomain,
           role: user.role,
           status: user.status,
         },
@@ -336,6 +372,10 @@ export async function getMe(req: Request, res: Response) {
       data: {
         id: user?.id || userId,
         email: user?.email || email,
+        fullName: user?.fullName || null,
+        companyName: user?.companyName || null,
+        phoneNumber: user?.phoneNumber || null,
+        primaryDomain: user?.primaryDomain || null,
         role: user?.role || role,
         status: user?.status,
         redirectUrl: (role === "SUPER_ADMIN" || role === "ADMIN") ? "/admin" : "/dashboard",

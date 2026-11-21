@@ -40,6 +40,7 @@ authRouter.post("/reset-password", authCtrl.resetPassword);
 authRouter.post("/2fa/setup", requireAuth, authCtrl.setup2FA);
 authRouter.post("/2fa/verify", requireAuth, authCtrl.verify2FA);
 authRouter.get("/me", requireAuth, authCtrl.getMe);
+authRouter.get("/packages", packageCtrl.listPackages);
 
 app.use("/api/v1/auth", authRouter);
 
