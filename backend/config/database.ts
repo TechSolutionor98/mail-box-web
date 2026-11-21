@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { Sequelize } from "sequelize";
 
 const DB_DIALECT = (process.env.DB_DIALECT || "mysql").toLowerCase() as "mysql" | "postgres" | "sqlite";
